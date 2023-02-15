@@ -7,26 +7,21 @@ var gImgs = [
   { id: 2, url: 'meme-imgs (square)/2.jpg', keywords: ['cute', 'dog'] },
   { id: 3, url: 'meme-imgs (square)/3.jpg', keywords: ['cute', 'dog'] },
   { id: 4, url: 'meme-imgs (square)/4.jpg', keywords: ['cute', 'dog'] },
+  { id: 5, url: 'meme-imgs (square)/5.jpg', keywords: ['cute', 'dog'] },
+  { id: 6, url: 'meme-imgs (square)/6.jpg', keywords: ['cute', 'dog'] },
+  { id: 7, url: 'meme-imgs (square)/7.jpg', keywords: ['cute', 'dog'] },
+  { id: 8, url: 'meme-imgs (square)/8.jpg', keywords: ['cute', 'dog'] },
+  { id: 9, url: 'meme-imgs (square)/9.jpg', keywords: ['cute', 'dog'] },
+  { id: 10, url: 'meme-imgs (square)/10.jpg', keywords: ['cute', 'dog'] },
+  { id: 11, url: 'meme-imgs (square)/11.jpg', keywords: ['cute', 'dog'] },
 ]
 var gMeme = {
   selectedImgId: 5,
   selectedLineIdx: 0,
   lines: [
     {
-      txt: 'Hello world',
+      txt: 'Change meme text →',
       size: 40,
-      align: 'left',
-      color: 'blue',
-    },
-    {
-      txt: 'feeling tired?',
-      size: 30,
-      align: 'left',
-      color: 'blue',
-    },
-    {
-      txt: 'it is what it is',
-      size: 30,
       align: 'left',
       color: 'blue',
     },
@@ -48,43 +43,55 @@ function getImages() {
 
 function getMeme() {
   return gMeme
-} 
-
-function setLineTxt(meme, newTxt) {
-  meme.lines[meme.selectedLineIdx].txt = newTxt
 }
 
-function addLine(meme, newTxt) {
-  meme.lines[gMeme.selectedLineIdx].txt = newTxt
+function setLineTxt(newTxt) {
+  gMeme.lines[gMeme.selectedLineIdx].txt = newTxt
 }
 
-function setText(meme, newTxt) {
-  meme.lines[meme.selectedLineIdx].txt = newTxt
+function addLine() {
+  gMeme.lines.push({
+    txt: 'Type here',
+    size: 30,
+    align: 'center',
+    color: 'white',
+  })
 }
 
-function setColor(meme, newColor) {
-  meme.lines[meme.selectedLineIdx].color = newColor
-}
-function setFont(meme, diff) {
-  meme.lines[meme.selectedLineIdx].size += diff 
+function deleteLine() {
+  if (gMeme.lines.length === 1) return
+  gMeme.lines.splice(gMeme.lines.length - 1, 1)
 }
 
+function removeLine() {
+  if (gMeme.lines.length === 1) return
+  gMeme.lines.splice(gMeme.lines.length - 1, 1)
+}
 
+function setText() {
+  txt = getLineTxt()
+  document.querySelector('.txt').value = txt
+}
 
-function drawText(text, x, y) {
-  gCtx.lineWidth = 2
-  // gCtx.strokeStyle = `${gMeme.lines[0].color}`
-  gCtx.strokeStyle = `${gMeme.lines[gMeme.selectedLineIdx].color}`
-  // gCtx.font = `${gMeme.lines[0].size}px Arial`
-  gCtx.font = `${gMeme.lines[gMeme.selectedLineIdx].size}px Arial`
+function setColor(newColor) {
+  gMeme.lines[gMeme.selectedLineIdx].color = newColor
+}
+function changeFontSize(diff) {
+  gMeme.lines[gMeme.selectedLineIdx].size += diff
+}
 
-  gCtx.fillText(text, x, y)
-  gCtx.strokeText(text, x, y) 
+function changeAlign(align) {
+  gMeme.lines[gMeme.selectedLineIdx].align = align
 }
 
 function switchLine() {
-  // let selectedIdx=gMeme.selectedLineIdx
-  console.log('gMeme.selectedLineIdx',gMeme.selectedLineIdx)
-  gMeme.selectedLineIdx===0 ? gMeme.selectedLineIdx++ : gMeme.selectedLineIdx--
-  console.log('gMeme.selectedLineIdx',gMeme.selectedLineIdx)
+  if (gMeme.lines.length === 1) return
+  if (gMeme.selectedLineIdx < gMeme.lines.length - 1) gMeme.selectedLineIdx++
+  else if (gMeme.selectedLineIdx === gMeme.lines.length - 1)
+    gMeme.selectedLineIdx = 0
+}
+
+function getLineTxt() {
+  const idx = gMeme.selectedLineIdx
+  return gMeme.lines[idx].txt
 }

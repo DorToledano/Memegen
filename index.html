@@ -33,8 +33,8 @@
             <div type="button" class="toggle-menu" onclick="toggleMenu()"></div>
             <nav class="main-nav clean-list">
                 <ul class="main-menu clean-list flex">
-                    <li><a href="index.html">Memes</a></li>
-                    <li><a href="#"><button onclick="showMemeCreatingPage()">Gallery</button> Gallery</a></li>
+                    <li><a href="#">Memes</a></li>
+                    <li><a href="#" onclick="showGallery()"><button onclick="showMemeCreatingPage()">Gallery</button> Gallery</a></li>
                     <li><a href="#" onclick="toggleModal()">About</a></li>
                 </ul>
             </nav>
@@ -71,13 +71,13 @@
                 </div>
 
                 <div class="card-input">
-                    <input class="txt" type="text" placeholder="Write meme text here" oninput="onDraw()">
+                    <input class="txt" type="text" placeholder="Write meme text here" oninput="onSetLineTxt(this.value)">
                 </div>
 
                 <div class="btns-container flex space-between">
                     <button class="up-down-btn btn-round" onclick="onSwitchLine()"><i class="fa-solid fa-arrows-up-down"></i></button>
                     <button class="add-line-btn btn-round" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
-                    <button class="delete-line-btn btn-round" onclick="clearCanvas()"><i class="fa-solid fa-trash-can"></i></button>
+                    <button class="delete-line-btn btn-round" onclick="onDeleteLine()"><i class="fa-solid fa-trash-can"></i></button>
 
                 </div>
 
@@ -87,9 +87,9 @@
                         <button class="decreaseSize-btn btn-round" onclick="onSetFont(-5)">A-</button>
                     </section>
                     <section class="align-txt-btns">
-                        <button class="btn-round"><i class="fa-solid fa-align-left"></i></button>
-                        <button class="btn-round"><i class="fa-solid fa-align-center"></i></button>
-                        <button class="btn-round"><i class="fa-solid fa-align-right"></i></button>
+                        <button class="btn-round" onclick="onChangeAlign('left')"><i class="fa-solid fa-align-left"></i></button>
+                        <button class="btn-round" onclick="onChangeAlign('center')"><i class="fa-solid fa-align-center"></i></button>
+                        <button class="btn-round" onclick="onChangeAlign('right')"><i class="fa-solid fa-align-right"></i></button>
                     </section>
                     <section>
                         <button  class="btn-round"><i class="fa-solid fa-palette"> <input type="color" name="" id="" oninput="onChangeColor(this.value)"></i></button>
