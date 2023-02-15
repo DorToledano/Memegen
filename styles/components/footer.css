@@ -1,0 +1,24 @@
+.footer-container {
+    flex-direction: column;
+    margin-inline-end: 60px;
+    margin-inline-start: 60px;
+    /* padding: 10px; */
+
+  }
+  .main-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: var(--clr4);
+    /* height: 300px; */
+    /* max-height: var(--nav-height); */
+
+  }
+  .main-footer .footer-container > * {
+    margin-block-end: .5rem;
+  }
+ 
+  .main-footer small{
+    color: var(--clr0);
+  }
+  

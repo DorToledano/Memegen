@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memegen</title>
+
+    <script src="https://kit.fontawesome.com/d80e2d5036.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body onload="init()" class="main-layout">
+
+    <div class="main-screen"></div>
+
+    <div class="modal">
+        <button class="close-button" onclick="toggleModal()">x</button>
+        <h1>Lorem ipsum dolor sit amet</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis aliquid tempore eaque ipsum labore
+            laudantium facere aliquam ullam eligendi exercitationem?</p>
+        <form class='form-modal' onsubmit="toggleModal()">
+            <label for="email">Join us to get access to the latest stories!</label>
+            <input type="email" class="email" name="email" placeholder="youremail@gmail.com">
+            <input type="submit" value="submit">
+        </form>
+    </div>
+    <header class="main-header full main-layout">
+
+        <section class="nav flex space-between align-center">
+            <div class="logo">Memegen</div>
+            <div type="button" class="toggle-menu" onclick="toggleMenu()"></div>
+            <nav class="main-nav clean-list">
+                <ul class="main-menu clean-list flex">
+                    <li><a href="#">Memes</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#" onclick="toggleModal()">About</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+
+    <main class="home-page" >
+        <section class="search-bar">
+            <label for="img-search">Choose an image:</label>
+            <input id="img-search" type="text" placeholder="Search">
+        </section>
+        <ul class="search-by-keywords clean-list flex">
+            <li><a href="#">happy</a></li>
+            <li><a href="#">sad</a></li>
+            <li><a href="#" >dogs</a></li>
+        </ul> 
+        <section class="gallery grid">
+            <img src="meme-imgs (square)/1.jpg" alt="">
+            <img src="meme-imgs (square)/2.jpg" alt="">
+            <img src="meme-imgs (square)/3.jpg" alt="">
+            <img src="meme-imgs (square)/4.jpg" alt="">
+        </section>
+    </main>
+
+    <main class="meme-creating" >
+      <!-- <img src="img/01.jpg" hidden /> -->
+        <main class="main-content">
+            <div class="card card-layout">
+                <!-- <img src="meme-imgs(square)/1.jpg" alt=""> -->
+
+                <!-- <canvas-container class="card-image" src="" alt="" /> -->
+                <div class="canvas-container">
+                    <canvas id="my-canvas" width="600" height="600" style="outline: 1px solid green"></canvas>
+                </div>
+
+                <div class="card-input">
+                    <input class="txt" type="text" placeholder="Write meme text here" oninput="onDraw()">
+                </div>
+
+                <div class="btns-container flex space-between">
+                    <button class="up-down-btn btn-round"><i class="fa-solid fa-arrows-up-down"></i></button>
+                    <button class="add-line-btn btn-round"><i class="fa-solid fa-plus"></i></button>
+                    <button class="delete-line-btn btn-round" onclick="clearCanvas()"><i class="fa-solid fa-trash-can"></i></button>
+
+                </div>
+
+                <div class="text-features flex space-between">
+                    <section class="change-size-btns">
+                        <button class="btn-round">A+</button>
+                        <button class="btn-round">A-</button>
+                    </section>
+                    <section class="align-txt-btns">
+                        <button class="btn-round"><i class="fa-solid fa-align-left"></i></button>
+                        <button class="btn-round"><i class="fa-solid fa-align-center"></i></button>
+                        <button class="btn-round"><i class="fa-solid fa-align-right"></i></button>
+                    </section>
+                    <section>
+                        <button class="btn-round"><i class="fa-solid fa-palette"></i></button>
+
+                    </section>
+
+                </div>
+
+                <button class="card-button btn-round">Share</button>
+            </div>
+
+            </div>
+        </main>
+
+    </main>
+
+    
+
+    <footer class="main-footer full">
+        <div class="footer-container flex space-between align-center">
+            <div class="logo">Memegen</div>
+            <small>© 2023 Memegen.com - All Rights Reserved - Dor Toledano</small>
+        </div>
+    </footer>
+
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/memeController.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

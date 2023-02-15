@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+  }
+  html {
+    color: #5a5959;
+    font-family: lato-regular;
+  }
+  
+  body {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  /* .meme-creating{
+    display: none;
+  } */
+  .home-page{
+    display: none;
+  }
+  /* canvas-container {
+    width: 100%;
+  } */
+  .canvas-container  {
+    width: 100%;
+  }
+  
+  h1, .card-input, h3, h4, h5,h6 {
+    margin: 0 0 1em;
+  }
+  
+  .card-input {
+    font-size: 1.75em;
+    /* font-family: lato-bold; */
+  }
+  
+  /* img{
+    width: 300px;
+  } */
+  /* p {
+    margin: 0 0 1em;
+  } */
+  

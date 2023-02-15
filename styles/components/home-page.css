@@ -1,0 +1,21 @@
+.home-page .search-bar{
+    grid-area: "serach";
+}
+
+.home-page .search-by-keywords{
+    grid-area: "keywords";
+    min-height: 100px;
+    gap: 20px;
+    /* align-items: center; */
+}
+
+.home-page .gallery{
+    grid-area: "gallery";
+    gap: .7em;
+    grid-template-columns: repeat(auto-fit,minmax(300px,auto));
+}
+.home-page .gallery img{
+  width: 100%;
+
+}
+
