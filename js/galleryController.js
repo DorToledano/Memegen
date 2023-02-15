@@ -18,6 +18,7 @@ function renderGallery() {
   }
 
   function showMemeCreatingPage() {
+    hideGallery()
     const elMemeCreatingPage = document.querySelector('.meme-creating')
     elMemeCreatingPage.hidden = false
   }
@@ -28,6 +29,7 @@ function renderGallery() {
   
   function showGallery() {
     renderGallery()
+    hideMemeCreatingPage()
     const elHomePage = document.querySelector('.home-page')
     elHomePage.hidden = false
   }

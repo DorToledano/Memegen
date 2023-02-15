@@ -8,9 +8,9 @@ function init() {
   hideMemeCreatingPage()
   gElCanvas = document.querySelector('#my-canvas')
   gCtx = gElCanvas.getContext('2d')
-  console.log('gCtx', gCtx)
+//   console.log('gCtx', gCtx)
   onDraw()
-  renderMeme()
+//   renderMeme()
 }
 
 function clearCanvas() {
@@ -33,7 +33,7 @@ function drawImg() {
   const meme = getMeme()
   console.log('meme',meme)
   let currImg = getImageById(meme.selectedImgId)
-  console.log('currImg', currImg)
+//   console.log('currImg', currImg)
   const img = new Image() // Create a new html img element
 
   img.src = currImg.url // Send a network req to get that image, define the img src
@@ -41,22 +41,28 @@ function drawImg() {
   // When the image ready draw it on the canvas
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
- 
   }
 }
 
 function renderMeme() {
   drawImg()
+//   drawText(gMeme.lines[gMeme.selectedLineIdx].txt, 50, 50)
+
 }
 
 function onChangeColor(color) {
-    setcolor(gMeme, color)
-    renderMeme()
+    setColor(gMeme, color)
+    // gCtx.strokeStyle = `${gMeme.lines[0].color}`
+  drawText(gMeme.lines[gMeme.selectedLineIdx].txt, 50, 50)
+
+    // renderMeme()
   }
   
   function onChangeTextFont(font) {
     setFont(gMeme, +font)
-    renderMeme()
+  drawText(gMeme.lines[gMeme.selectedLineIdx].txt, 50, 50)
+
+    // renderMeme()
   }
   function onSwitchLine() {
     switchLine()
@@ -66,5 +72,13 @@ function onChangeColor(color) {
   
     setLineTxt(gMeme, elInputTxt.value)
   
-    drawText(gMeme.lines[gMeme.selectedLineIdx].txt, 200, 200)
+    drawText(gMeme.lines[gMeme.selectedLineIdx].txt, 50, 500)
+  }
+
+  function onSetFont(diff){
+    //   renderMeme()
+    setFont(gMeme, diff)
+   drawText(gMeme.lines[gMeme.selectedLineIdx].txt, 50, 50)
+
+
   }

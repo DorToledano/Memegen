@@ -48,6 +48,14 @@ function getImages() {
 
 function getMeme() {
   return gMeme
+} 
+
+function setLineTxt(meme, newTxt) {
+  meme.lines[meme.selectedLineIdx].txt = newTxt
+}
+
+function addLine(meme, newTxt) {
+  meme.lines[gMeme.selectedLineIdx].txt = newTxt
 }
 
 function setText(meme, newTxt) {
@@ -57,8 +65,8 @@ function setText(meme, newTxt) {
 function setColor(meme, newColor) {
   meme.lines[meme.selectedLineIdx].color = newColor
 }
-function setFont(meme, newFont) {
-  meme.lines[meme.selectedLineIdx].size = newFont
+function setFont(meme, diff) {
+  meme.lines[meme.selectedLineIdx].size += diff 
 }
 
 
