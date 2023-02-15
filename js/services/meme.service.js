@@ -3,8 +3,10 @@
 
 var gKeywordSearchCountMap = { funny: 12, dog: 20, politics: 2 }
 var gImgs = [
-  { id: 1, url: 'img/1.jpg', keywords: ['funny', 'politics'] },
-  { id: 2, url: 'img/2.jpg', keywords: ['cute', 'dog'] },
+  { id: 1, url: 'meme-imgs (square)/1.jpg', keywords: ['funny', 'politics'] },
+  { id: 2, url: 'meme-imgs (square)/2.jpg', keywords: ['cute', 'dog'] },
+  { id: 3, url: 'meme-imgs (square)/3.jpg', keywords: ['cute', 'dog'] },
+  { id: 4, url: 'meme-imgs (square)/4.jpg', keywords: ['cute', 'dog'] },
 ]
 var gMeme = {
   selectedImgId: 5,
@@ -31,25 +33,6 @@ var gMeme = {
   ],
 }
 
-function getImages() {
-  return gImgs
-}
-
-function getMeme() {
-  return gMeme
-}
-
-// setLineTxt(gMeme)
-function setLineTxt(meme, newTxt) {
-  meme.lines[meme.selectedLineIdx].txt = newTxt
-}
-
-function setcolor(meme, newColor) {
-  meme.lines[meme.selectedLineIdx].color = newColor
-}
-function setFont(meme, newFont) {
-  meme.lines[meme.selectedLineIdx].size = newFont
-}
 function setImg(id) {
   gMeme.selectedImgId = id
 }
@@ -58,14 +41,37 @@ function getImageById(imgId) {
   let img = gImgs.find((img) => img.id === imgId)
   return img
 }
+
+function getImages() {
+  return gImgs
+}
+
+function getMeme() {
+  return gMeme
+}
+
+function setText(meme, newTxt) {
+  meme.lines[meme.selectedLineIdx].txt = newTxt
+}
+
+function setColor(meme, newColor) {
+  meme.lines[meme.selectedLineIdx].color = newColor
+}
+function setFont(meme, newFont) {
+  meme.lines[meme.selectedLineIdx].size = newFont
+}
+
+
+
 function drawText(text, x, y) {
   gCtx.lineWidth = 2
   gCtx.strokeStyle = `${gMeme.lines[0].color}`
-  // gCtx.fillStyle = 'yellow'
   gCtx.font = `${gMeme.lines[0].size}px Arial`
-  // gCtx.textAlign = 'center'
-  // gCtx.textBaseline = 'middle'
 
-  gCtx.fillText(text, x, y) // Draws (fills) a given text at the given (x, y) position.
-  gCtx.strokeText(text, x, y) // Draws (strokes) a given text at the given (x, y) position.
+  gCtx.fillText(text, x, y)
+  gCtx.strokeText(text, x, y) 
+}
+
+function switchLine() {
+  gMeme.selectedLineIdx++
 }

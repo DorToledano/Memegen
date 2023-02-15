@@ -52,10 +52,10 @@
             <li><a href="#" >dogs</a></li>
         </ul> 
         <section class="gallery grid">
-            <img src="meme-imgs (square)/1.jpg" alt="">
+            <!-- <img src="meme-imgs (square)/1.jpg" alt="">
             <img src="meme-imgs (square)/2.jpg" alt="">
             <img src="meme-imgs (square)/3.jpg" alt="">
-            <img src="meme-imgs (square)/4.jpg" alt="">
+            <img src="meme-imgs (square)/4.jpg" alt=""> -->
         </section>
     </main>
 
@@ -76,15 +76,15 @@
 
                 <div class="btns-container flex space-between">
                     <button class="up-down-btn btn-round"><i class="fa-solid fa-arrows-up-down"></i></button>
-                    <button class="add-line-btn btn-round"><i class="fa-solid fa-plus"></i></button>
+                    <button class="add-line-btn btn-round" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
                     <button class="delete-line-btn btn-round" onclick="clearCanvas()"><i class="fa-solid fa-trash-can"></i></button>
 
                 </div>
 
                 <div class="text-features flex space-between">
                     <section class="change-size-btns">
-                        <button class="btn-round">A+</button>
-                        <button class="btn-round">A-</button>
+                        <button class="increaseSize-btn btn-round">A+</button>
+                        <button class="decreaseSize-btn btn-round">A-</button>
                     </section>
                     <section class="align-txt-btns">
                         <button class="btn-round"><i class="fa-solid fa-align-left"></i></button>
@@ -92,7 +92,7 @@
                         <button class="btn-round"><i class="fa-solid fa-align-right"></i></button>
                     </section>
                     <section>
-                        <button class="btn-round"><i class="fa-solid fa-palette"></i></button>
+                        <button  class="btn-round"><i class="fa-solid fa-palette"> <input type="color" name="" id="" oninput="onChangeColor(this.value)"></i></button>
 
                     </section>
 
@@ -117,6 +117,8 @@
 
     <script src="js/services/meme.service.js"></script>
     <script src="js/memeController.js"></script>
+    <script src="js/galleryController.js"></script>
+    
     <script src="js/main.js"></script>
 </body>
 
