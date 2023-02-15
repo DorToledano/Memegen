@@ -25,8 +25,10 @@ function onDraw() {
   const meme = getMeme()
   const elInputPrice = document.querySelector('.txt')
   setText(meme, elInputPrice.value)
-
-  drawText(meme.lines[gMeme.selectedLineIdx].txt, 50, 50)
+// console.log('gMeme.selectedLineIdx',gMeme.selectedLineIdx)
+// drawText(meme.lines[gMeme.selectedLineIdx].txt, 50, 50)
+  if (gMeme.selectedLineIdx===0) drawText(meme.lines[gMeme.selectedLineIdx].txt, 50, 50) 
+  if (gMeme.selectedLineIdx===1) drawText(meme.lines[gMeme.selectedLineIdx].txt, 50, 500)
 }
 
 function drawImg() {
@@ -68,10 +70,11 @@ function onChangeColor(color) {
     switchLine()
   }
   function onAddLine() {
+    switchLine()
     const elInputTxt = document.querySelector('.txt')
   
     setLineTxt(gMeme, elInputTxt.value)
-  
+    
     drawText(gMeme.lines[gMeme.selectedLineIdx].txt, 50, 500)
   }
 

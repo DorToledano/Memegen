@@ -14,19 +14,19 @@ var gMeme = {
   lines: [
     {
       txt: 'Hello world',
-      size: 20,
+      size: 40,
       align: 'left',
       color: 'blue',
     },
     {
       txt: 'feeling tired?',
-      size: 20,
+      size: 30,
       align: 'left',
       color: 'blue',
     },
     {
       txt: 'it is what it is',
-      size: 20,
+      size: 30,
       align: 'left',
       color: 'blue',
     },
@@ -73,13 +73,18 @@ function setFont(meme, diff) {
 
 function drawText(text, x, y) {
   gCtx.lineWidth = 2
-  gCtx.strokeStyle = `${gMeme.lines[0].color}`
-  gCtx.font = `${gMeme.lines[0].size}px Arial`
+  // gCtx.strokeStyle = `${gMeme.lines[0].color}`
+  gCtx.strokeStyle = `${gMeme.lines[gMeme.selectedLineIdx].color}`
+  // gCtx.font = `${gMeme.lines[0].size}px Arial`
+  gCtx.font = `${gMeme.lines[gMeme.selectedLineIdx].size}px Arial`
 
   gCtx.fillText(text, x, y)
   gCtx.strokeText(text, x, y) 
 }
 
 function switchLine() {
-  gMeme.selectedLineIdx++
+  // let selectedIdx=gMeme.selectedLineIdx
+  console.log('gMeme.selectedLineIdx',gMeme.selectedLineIdx)
+  gMeme.selectedLineIdx===0 ? gMeme.selectedLineIdx++ : gMeme.selectedLineIdx--
+  console.log('gMeme.selectedLineIdx',gMeme.selectedLineIdx)
 }
