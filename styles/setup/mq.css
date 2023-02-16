@@ -1,9 +1,17 @@
 /* mobile-menu */
 @media (max-width: 740px) {
 
-  .card > *:not(.canvas-container){
+  .card > *{
      /* check later */
-    grid-column: 1;
+    grid-column: 2;
+  }
+  .card .editor{
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: black;
+    padding: 2em 1em;
+    width: 600px;
+    border-radius: 3em;
   }
     .main-layout{
       /* check later */
@@ -85,21 +93,32 @@
       box-shadow: -16px 9px 13px 11px #29292996;
       background-color: white;
     }
+    
+  
   }
   
   @media (min-width: 740px) {
     :root {
       --side-padding: 0px;
       --center-padding: 40px;
+      --nav-height: 160px;
+
     }
     /* main-Layout */
     .main-layout {
       display: grid;
       grid-template-columns:
         minmax(20px, 1fr)
-        minmax(auto, 600px)
+        minmax(auto, 700px)
         minmax(20px, 1fr);
+
+        grid-template-rows:
+        minmax(160px, 1fr)
+        minmax(auto, 1400px)
+        minmax(160px, 1fr);
     }
+    
+    
     .main-layout > *:not(.full) {
       grid-column: 2;
     }
@@ -142,51 +161,23 @@
     .nav button {
       display: none;
     }
-
+    .card .editor{
+      flex-direction: column;
+      align-items: flex-start;
+      background-color: black;
+      padding: 2em 1em;
+      width: 600px;
+      border-radius: 3em;
+    }
+    
+    footer{
+      position: sticky;
+      bottom: 0;
+    }
    
   }
   
-  /* MEDIUM */
-  /* 880px */
-  
-  @media (min-width: 930px) {
-    .main-layout {
-      grid-template-columns:
-        minmax(20px, 1fr)
-        minmax(auto, 880px)
-        minmax(20px, 1fr);
-    }
-    :root {
-      --side-padding: 40px;
-      --center-padding: 40px;
-    }
-    
-    .meme-creating{
-      margin-block: auto;
-    }
-    .card-layout {
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: auto 1fr 1fr 1fr auto;
-      /* grid-template-rows: auto ; */
-      gap: 0 43px;
-    
-      grid-template-areas: 
-      "i h"
-      "i p"
-      "i t"
-      /* "i e" */
-      "i b"
-      ;
-    }
 
-    /* .home-page-layout{
-      grid-template-areas: 
-      "serach keywords"
-      "gallery gallery"
-      "gallery gallery"
-      ;
-    } */
-  }
   
   /* LARGE */
   /* 1060px */
@@ -201,19 +192,25 @@
     .main-layout {
       grid-template-columns:
         minmax(20px, 1fr)
-        minmax(auto, 1060px)
+        minmax(auto, 1400px)
         minmax(20px, 1fr);
 
-        grid-template-rows: minmax(130px,auto) 1fr minmax(130px,auto);
+        grid-template-rows:
+        minmax(130px, 1fr)
+        minmax(auto, 1400px)
+        minmax(130px, 1fr);
     }
     .card-layout {
-      grid-template-rows: auto 1fr 5fr 1fr auto;
+      grid-template-columns: 1fr;
       margin-block-start: 2em;
       justify-items: center;
+      gap: 60px;
     }
+    .card .canvas-container{
+     grid-row: 1;
 
+   }
    
-
     .home-page-layout{
       /* check why doesnt work ??? */
       grid-template-areas: 
@@ -223,10 +220,13 @@
       ;
     }
 
-    .saved-memes-container{
-      /* display: grid; */
-      /* grid-auto-flow: column; */
-      column-count: 3;
+    .card .editor{
+      flex-direction: column;
+      align-items: flex-start;
+      background-color: black;
+      padding: 3.1em;
+      /* border-radius: 3em; */
+      width: 100%;
     }
 
     

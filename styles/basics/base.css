@@ -11,21 +11,16 @@
     margin: 0;
   }
 
-  /* .meme-creating{
-    display: none;
-  } */
-  /* .home-page{
-    display: none;
-  } */
-  /* canvas-container {
-    width: 100%;
-  } */
   .canvas-container  {
     width: 100%;
   }
   
-  h1, .card-input, h3, h4, h5,h6 {
+  .card-input, h3, h4, h5,h6 {
     margin: 0 0 1em;
+  }
+
+  h1{
+    margin-block-start: 20px;
   }
   
   .card-input {
@@ -33,12 +28,7 @@
     /* font-family: lato-bold; */
   }
   
-  /* img{
-    width: 300px;
-  } */
-  /* p {
-    margin: 0 0 1em;
-  } */
+
    .emojis button {
     padding: 0;
     border: 0;
@@ -47,4 +37,10 @@
 
    .saved-memes-container img {
     width:300px;
-   }
+  }
+  .saved-memes-container{
+    /* column-count: 3; */
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+  }

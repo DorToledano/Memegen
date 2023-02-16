@@ -15,6 +15,7 @@
 
     <div class="main-screen"></div>
 
+    <!-- modal -->
     <div class="modal">
         <button class="close-button" onclick="toggleModal()">x</button>
         <h1>Make memes with us</h1>
@@ -28,6 +29,8 @@
             <input type="submit" value="submit">
         </form>
     </div>
+
+    <!-- header -->
     <header class="main-header full main-layout">
 
         <section class="nav flex space-between align-center">
@@ -44,6 +47,7 @@
 
     </header>
 
+    <!-- Photoes gallery page-->
     <main class="home-page" >
         <section class="search-bar">
             <label for="img-search">Choose an image:</label>
@@ -62,53 +66,56 @@
         </section>
     </main>
 
+    <!-- meme editing page-->
     <main class="meme-creating" >
         <main class="main-content">
             <div class="card card-layout">
                 <div class="canvas-container">
                     <canvas id="my-canvas" width="600" height="600" style="outline: 3px solid black"></canvas>
                 </div>
+                <section class="editor flex">
 
-                <div class="card-input">
-                    <input class="txt" type="text" placeholder="Write meme text here" oninput="onSetLineTxt(this.value)">
-                </div>
-
-                <div class="btns-container flex space-between">
-                    <button class="up-down-btn btn-round" onclick="isIncreaseLineHt('true')"><i class="fa-solid fa-arrow-up"></i></button>
-                    <button class="up-down-btn btn-round" onclick="isDecreaseLineHt('true')"><i class="fa-solid fa-arrow-down"></i></button>
-                    <button class="up-down-btn btn-round" onclick="onSwitchLine()"><i class="fa-solid fa-arrows-up-down"></i></button>
-                    <button class="add-line-btn btn-round" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
-                    <button class="delete-line-btn btn-round" onclick="onDeleteLine()"><i class="fa-solid fa-trash-can"></i></button>
-
-                </div>
-
-                <div class="text-features flex space-between">
-                    <section class="change-size-btns">
-                        <button class="increaseSize-btn btn-round" onclick="onSetFont(5)">A+</button>
-                        <button class="decreaseSize-btn btn-round" onclick="onSetFont(-5)">A-</button>
+                    <div class="card-input">
+                        <input class="txt" type="text" placeholder="Write meme text here" oninput="onSetLineTxt(this.value)">
+                    </div>
+    
+                    
+                    <div class="text-features flex space-between">
+                        <div class="btns-container flex space-between">
+                            <button class="up-down-btn btn-round" onclick="isIncreaseLineHt('true')"><i class="fa-solid fa-arrow-up"></i></button>
+                            <button class="up-down-btn btn-round" onclick="isDecreaseLineHt('true')"><i class="fa-solid fa-arrow-down"></i></button>
+                            <button class="up-down-btn btn-round" onclick="onSwitchLine()"><i class="fa-solid fa-arrows-up-down"></i></button>
+                            <button class="add-line-btn btn-round" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
+                            <button class="delete-line-btn btn-round" onclick="onDeleteLine()"><i class="fa-solid fa-trash-can"></i></button>
+        
+                        </div>
+                        <section class="change-size-btns">
+                            <button class="increaseSize-btn btn-round" onclick="onSetFont(5)">A+</button>
+                            <button class="decreaseSize-btn btn-round" onclick="onSetFont(-5)">A-</button>
+                        </section>
+                        <section class="align-txt-btns">
+                            <button class="btn-round" onclick="onChangeAlign('left')"><i class="fa-solid fa-align-left"></i></button>
+                            <button class="btn-round" onclick="onChangeAlign('center')"><i class="fa-solid fa-align-center"></i></button>
+                            <button class="btn-round" onclick="onChangeAlign('right')"><i class="fa-solid fa-align-right"></i></button>
+                        </section>
+                        <section>
+                            <button  class="btn-round"><i class="fa-solid fa-palette"> <input type="color" name="" id="" oninput="onChangeColor(this.value)"></i></button>
+    
+                        </section>
+    
+                    </div>
+                    <section class="emojis flex space-between ">
+                        <!-- <button onclick="OnAddEmoji()">🥲</button> 
+                        😍😜😎😡😢😶‍🌫️🤬🤯 -->
                     </section>
-                    <section class="align-txt-btns">
-                        <button class="btn-round" onclick="onChangeAlign('left')"><i class="fa-solid fa-align-left"></i></button>
-                        <button class="btn-round" onclick="onChangeAlign('center')"><i class="fa-solid fa-align-center"></i></button>
-                        <button class="btn-round" onclick="onChangeAlign('right')"><i class="fa-solid fa-align-right"></i></button>
+                    <section class="import-btns">
+                        <button class="card-button btn-round" onclick="downloadImg(this)">Download</button>
+                        <button class="card-button btn-round" onclick="onUploadImg()">Share</button>
+                        <button class="card-button btn-round" onclick="onSaveMemeData()">Save</button>
+                        <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
+    
+    
                     </section>
-                    <section>
-                        <button  class="btn-round"><i class="fa-solid fa-palette"> <input type="color" name="" id="" oninput="onChangeColor(this.value)"></i></button>
-
-                    </section>
-
-                </div>
-                <section class="emojis flex space-between ">
-                    <!-- <button onclick="OnAddEmoji()">🥲</button> 
-                    😍😜😎😡😢😶‍🌫️🤬🤯 -->
-                </section>
-                <section class="import-btns">
-                    <button class="card-button btn-round" onclick="downloadImg(this)">Download</button>
-                    <button class="card-button btn-round" onclick="onUploadImg()">Share</button>
-                    <button class="card-button btn-round" onclick="onSaveMemeData()">Save</button>
-                    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
-
-
                 </section>
             </div>
 
@@ -117,6 +124,7 @@
 
     </main>
 
+    <!-- saved memes page -->
     <main class="memes-page "> 
         <h1>My Memes</h1>
         <section class="saved-memes-container ">
@@ -124,6 +132,7 @@
         </section>
     </main>
 
+    <!-- footer -->
     <footer class="main-footer full">
         <div class="footer-container flex space-between align-center">
             <div class="logo">Memegen</div>

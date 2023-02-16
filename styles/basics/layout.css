@@ -21,14 +21,13 @@ body {
   
   .card-layout {
     display: grid;
-    justify-items: center;
-    grid-template-areas: 
+    /* grid-template-areas: 
     "i"
     "h"
     "p"
     "t"
     "b"
-    ;
+    ; */
   }
   
   .home-page-layout{
