@@ -1,5 +1,10 @@
 /* mobile-menu */
 @media (max-width: 740px) {
+
+  .card > *:not(.canvas-container){
+     /* check later */
+    grid-column: 1;
+  }
     .main-layout{
       /* check later */
       grid-template-rows: 
@@ -137,6 +142,8 @@
     .nav button {
       display: none;
     }
+
+   
   }
   
   /* MEDIUM */
@@ -153,7 +160,10 @@
       --side-padding: 40px;
       --center-padding: 40px;
     }
-  
+    
+    .meme-creating{
+      margin-block: auto;
+    }
     .card-layout {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: auto 1fr 1fr 1fr auto;
@@ -197,6 +207,8 @@
     }
     .card-layout {
       grid-template-rows: auto 1fr 5fr 1fr auto;
+      margin-block-start: 2em;
+      justify-items: center;
     }
 
    

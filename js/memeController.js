@@ -1,6 +1,8 @@
 let gElCanvas
 let gCtx
 let gCurrShape = 'rect'
+let isDecreaseLineHeight = false
+let isIncreaseLineHeight = false
 
 function init() {
   showGallery()
@@ -9,25 +11,33 @@ function init() {
   gCtx = gElCanvas.getContext('2d')
 }
 
+// function getCurrImg(){
+//   const meme = getMeme()
+//   let currImg = getImageById(meme.selectedImgId)
+//   const img = new Image()
+//   img.src = currImg.url
+//   return img
+// }
+// var image = getCurrImg()
+
 function renderMeme() {
   const meme = getMeme()
   let currImg = getImageById(meme.selectedImgId)
-  //   console.log('currImg', currImg)
-  const img = new Image() // Create a new html img element
-
+  const img = new Image()
   img.src = currImg.url
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
     gMeme.lines.forEach((line, idx) =>
       drawText(line.txt, line.color, line.size, meme.font, line.align, idx)
     )
+
     changeInputTxt()
   }
 }
 
 function drawText(text, color, size, font = 'arial', align, lineIdx) {
-  gCtx.lineWidth = 2
-  gCtx.strokeStyle = `${color}`
+  gCtx.lineWidth = 1
+  gCtx.strokeStyle = `white`
   gCtx.fillStyle = `${color}`
   gCtx.font = `${size}px ${font}`
   gCtx.textAlign = `${align}`
@@ -36,19 +46,56 @@ function drawText(text, color, size, font = 'arial', align, lineIdx) {
   const { x, y } = setTxtPos(lineIdx)
   gCtx.fillText(text, x, y)
   gCtx.strokeText(text, x, y)
+  isDecreaseLineHeight = false
+  isIncreaseLineHeight = false
   gCtx.save()
 }
 
+// function onSetTxtPos(diff) {
+//   // supposed to make input go up/down on page - doesnt work
+//   const meme = getMeme()
+//   console.log('meme', meme)
+//   const lineIdx = meme.selectedLineIdx
+//   setTxtPos(lineIdx, (diff = 0))
+//   renderMeme()
+// }
+
+function isDecreaseLineHt(bool) {
+  isDecreaseLineHeight = bool
+  renderMeme()
+}
+
+function isIncreaseLineHt(bool) {
+  isIncreaseLineHeight = bool
+  renderMeme()
+}
+
 function setTxtPos(lineIdx) {
-  // console.log('lineIdx',lineIdx)
+  const meme = getMeme()
+  const line = getLine(lineIdx)
+  console.log('line.diff', line.diff)
+  if (line.diff < 0) line.diff = 0
+  else if (line.diff >= gElCanvas.height - 100)
+    line.diff = gElCanvas.height - 100
+  if (isDecreaseLineHeight) line.diff += 5
+  if (isIncreaseLineHeight) line.diff += -5
   switch (lineIdx) {
-      case 0:
-          return { x: 50, y: 50 }
-      case 1:
-          return { x: 150, y: 500 }
-      default:
-          return { x: 200, y: 200 }
+    case 0:
+      return { x: 50, y: 50 + meme.lines[0].diff }
+    case 1:
+      return { x: 115, y: 500 + meme.lines[1].diff }
+    default:
+      return { x: 200, y: 200 + meme.lines[lineIdx].diff }
   }
+
+  // switch (lineIdx) {
+  //     case 0:
+  //         return { x: 50, y: 50 }
+  //     case 1:
+  //         return { x: 150, y: 500 }
+  //     default:
+  //         return { x: 200, y: 200 }
+  // }
 }
 
 function changeInputTxt() {
@@ -74,6 +121,7 @@ function onSwitchLine() {
 
 function onAddLine() {
   addLine()
+  switchLine()
   renderMeme()
 }
 
@@ -101,4 +149,118 @@ function onChangeAlign(align) {
 //   gCtx.clearRect(0, 0, 50, 50)
 // }
 
+function onUploadImg() {
+  const imgDataUrl = gElCanvas.toDataURL('image/jpeg') // Gets the canvas content as an image format
 
+  // A function to be called if request succeeds
+  function onSuccess(uploadedImgUrl) {
+    // Encode the instance of certain characters in the url
+    const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+    console.log(encodedUploadedImgUrl)
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`
+    )
+  }
+  // Send the image to the server
+  doUploadImg(imgDataUrl, onSuccess)
+}
+
+function doUploadImg(imgDataUrl, onSuccess) {
+  // Pack the image for delivery
+  const formData = new FormData()
+  formData.append('img', imgDataUrl)
+
+  // Send a post req with the image to the server
+  const XHR = new XMLHttpRequest()
+  XHR.onreadystatechange = () => {
+    // If the request is not done, we have no business here yet, so return
+    if (XHR.readyState !== XMLHttpRequest.DONE) return
+    // if the response is not ok, show an error
+    if (XHR.status !== 200) return console.error('Error uploading image')
+    const { responseText: url } = XHR
+    // Same as
+    // const url = XHR.responseText
+
+    // If the response is ok, call the onSuccess callback function,
+    // that will create the link to facebook using the url we got
+    console.log('Got back live url:', url)
+    onSuccess(url)
+  }
+  XHR.onerror = (req, ev) => {
+    console.error(
+      'Error connecting to server with request:',
+      req,
+      '\nGot response data:',
+      ev
+    )
+  }
+  XHR.open('POST', '//ca-upload.com/here/upload.php')
+  XHR.send(formData)
+}
+
+function downloadImg(elLink) {
+  const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
+  elLink.href = imgContent
+}
+
+function onImgInput(ev) {
+  loadImageFromInput(ev, renderImg)
+}
+
+// var gImgSrc
+// CallBack func will run on success load of the img
+function loadImageFromInput(ev, onImageReady) {
+  const reader = new FileReader()
+  // After we read the file
+  reader.onload = function (event) {
+    let img = new Image() // Create a new html img element
+    img.src = event.target.result // Set the img src to the img file we read
+
+    // gImgSrc  = event.target.result
+
+    // Run the callBack func, To render the img on the canvas
+    img.onload = onImageReady.bind(null, img)
+
+    // Can also do it this way:
+    // img.onload = () => onImageReady(img)
+  }
+  reader.readAsDataURL(ev.target.files[0]) // Read the file we picked
+}
+
+function renderImg(img) {
+  // // Draw the img on the canvas
+  gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+
+  // const img = new Image()
+  // img.src = gImgSrc
+  // // console.log('img',img)
+  // img.onload = () => {
+  //   // console.log('img',img)
+  //   gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+  //   gMeme.lines.forEach((line, idx) =>
+  //     drawText(line.txt, line.color, line.size, meme.font, line.align, idx)
+  //   )
+  //   changeInputTxt()
+  // }
+}
+
+function getEvPos(ev) {
+  // Gets the offset pos , the default pos
+  let pos = {
+    x: ev.offsetX,
+    y: ev.offsetY,
+  }
+  // Check if its a touch ev
+  if (TOUCH_EVS.includes(ev.type)) {
+    //soo we will not trigger the mouse ev
+    ev.preventDefault()
+    //Gets the first touch point
+    ev = ev.changedTouches[0]
+    //Calc the right pos according to the touch screen
+    pos = {
+      x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+      y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+    }
+  }
+  return pos
+}

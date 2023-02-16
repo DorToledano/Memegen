@@ -21,7 +21,7 @@ body {
   
   .card-layout {
     display: grid;
-  
+    justify-items: center;
     grid-template-areas: 
     "i"
     "h"

@@ -23,7 +23,10 @@ var gMeme = {
       txt: 'Change meme text →',
       size: 40,
       align: 'left',
-      color: 'blue',
+      color: 'black',
+      diff:0,
+      // x:50,
+      // y:50,
     },
   ],
 }
@@ -55,6 +58,7 @@ function addLine() {
     size: 30,
     align: 'center',
     color: 'white',
+    diff:0,
   })
 }
 
@@ -94,4 +98,8 @@ function switchLine() {
 function getLineTxt() {
   const idx = gMeme.selectedLineIdx
   return gMeme.lines[idx].txt
+}
+
+function getLine(idx) {
+  return gMeme.lines[idx]
 }

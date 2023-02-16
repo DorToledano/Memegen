@@ -17,9 +17,11 @@
 
     <div class="modal">
         <button class="close-button" onclick="toggleModal()">x</button>
-        <h1>Lorem ipsum dolor sit amet</h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis aliquid tempore eaque ipsum labore
-            laudantium facere aliquam ullam eligendi exercitationem?</p>
+        <h1>Make memes with us</h1>
+        <p>In MemeGen app you can make your own memes using either our recomended images or upload any of your own!
+            you can save, download and share with all your friends on socisl media!
+            excited ? Try it out yourself 🤩
+        </p>
         <form class='form-modal' onsubmit="toggleModal()">
             <label for="email">Join us to get access to the latest stories!</label>
             <input type="email" class="email" name="email" placeholder="youremail@gmail.com">
@@ -34,11 +36,12 @@
             <nav class="main-nav clean-list">
                 <ul class="main-menu clean-list flex">
                     <li><a href="#">Memes</a></li>
-                    <li><a href="#" onclick="showGallery()"><button onclick="showMemeCreatingPage()">Gallery</button> Gallery</a></li>
+                    <li><a href="#" onclick="showGallery()"> Gallery</a></li>
                     <li><a href="#" onclick="toggleModal()">About</a></li>
                 </ul>
             </nav>
         </section>
+
     </header>
 
     <main class="home-page" >
@@ -60,14 +63,10 @@
     </main>
 
     <main class="meme-creating" >
-      <!-- <img src="img/01.jpg" hidden /> -->
         <main class="main-content">
             <div class="card card-layout">
-                <!-- <img src="meme-imgs(square)/1.jpg" alt=""> -->
-
-                <!-- <canvas-container class="card-image" src="" alt="" /> -->
                 <div class="canvas-container">
-                    <canvas id="my-canvas" width="600" height="600" style="outline: 1px solid green"></canvas>
+                    <canvas id="my-canvas" width="600" height="600" style="outline: 3px solid black"></canvas>
                 </div>
 
                 <div class="card-input">
@@ -75,6 +74,8 @@
                 </div>
 
                 <div class="btns-container flex space-between">
+                    <button class="up-down-btn btn-round" onclick="isIncreaseLineHt('true')"><i class="fa-solid fa-arrow-up"></i></button>
+                    <button class="up-down-btn btn-round" onclick="isDecreaseLineHt('true')"><i class="fa-solid fa-arrow-down"></i></button>
                     <button class="up-down-btn btn-round" onclick="onSwitchLine()"><i class="fa-solid fa-arrows-up-down"></i></button>
                     <button class="add-line-btn btn-round" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
                     <button class="delete-line-btn btn-round" onclick="onDeleteLine()"><i class="fa-solid fa-trash-can"></i></button>
@@ -97,8 +98,13 @@
                     </section>
 
                 </div>
+                <section class="import-btns">
+                    <button class="card-button btn-round" onclick="downloadImg(this)">Download</button>
+                    <button class="card-button btn-round" onclick="onUploadImg()">Share</button>
+                    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
 
-                <button class="card-button btn-round">Share</button>
+
+                </section>
             </div>
 
             </div>
