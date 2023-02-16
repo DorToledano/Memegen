@@ -3,10 +3,11 @@ let gCtx
 let gCurrShape = 'rect'
 let isDecreaseLineHeight = false
 let isIncreaseLineHeight = false
+const MEMES_DB = 'memes'
+
 
 function init() {
   showGallery()
-  hideMemeCreatingPage()
   gElCanvas = document.querySelector('#my-canvas')
   gCtx = gElCanvas.getContext('2d')
 }
@@ -73,7 +74,7 @@ function isIncreaseLineHt(bool) {
 function setTxtPos(lineIdx) {
   const meme = getMeme()
   const line = getLine(lineIdx)
-  console.log('line.diff', line.diff)
+  // console.log('line.diff', line.diff)
   if (line.diff < 0) line.diff = 0
   else if (line.diff >= gElCanvas.height - 100)
     line.diff = gElCanvas.height - 100
@@ -143,6 +144,11 @@ function onChangeColor(color) {
 function onChangeAlign(align) {
   changeAlign(align)
   renderMeme()
+}
+
+function OnAddEmoji(elBtn){
+    addEmoji(elBtn)
+    renderMeme()
 }
 
 // function clearCanvas() {
@@ -264,3 +270,4 @@ function getEvPos(ev) {
   }
   return pos
 }
+

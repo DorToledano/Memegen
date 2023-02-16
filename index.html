@@ -35,7 +35,7 @@
             <div type="button" class="toggle-menu" onclick="toggleMenu()"></div>
             <nav class="main-nav clean-list">
                 <ul class="main-menu clean-list flex">
-                    <li><a href="#">Memes</a></li>
+                    <li><a href="#" onclick="showMemesPage()">Memes</a></li>
                     <li><a href="#" onclick="showGallery()"> Gallery</a></li>
                     <li><a href="#" onclick="toggleModal()">About</a></li>
                 </ul>
@@ -98,9 +98,14 @@
                     </section>
 
                 </div>
+                <section class="emojis flex space-between ">
+                    <!-- <button onclick="OnAddEmoji()">🥲</button> 
+                    😍😜😎😡😢😶‍🌫️🤬🤯 -->
+                </section>
                 <section class="import-btns">
                     <button class="card-button btn-round" onclick="downloadImg(this)">Download</button>
                     <button class="card-button btn-round" onclick="onUploadImg()">Share</button>
+                    <button class="card-button btn-round" onclick="onSaveMemeData()">Save</button>
                     <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
 
 
@@ -112,7 +117,12 @@
 
     </main>
 
-    
+    <main class="memes-page "> 
+        <h1>My Memes</h1>
+        <section class="saved-memes-container ">
+            <!-- <img src="" alt=""> -->
+        </section>
+    </main>
 
     <footer class="main-footer full">
         <div class="footer-container flex space-between align-center">
@@ -121,8 +131,10 @@
         </div>
     </footer>
 
+    <script src="js/services/util.service.js"></script>
     <script src="js/services/meme.service.js"></script>
     <script src="js/memeController.js"></script>
+    <script src="js/savedMemesController.js"></script>
     <script src="js/galleryController.js"></script>
     
     <script src="js/main.js"></script>

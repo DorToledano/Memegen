@@ -10,17 +10,6 @@
   .main-header .nav {
     height: 100%;
   }
-  /* .main-header .main-nav {
-    margin-inline-end: 60px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-block-start: 200px;
-  
-    justify-self: center;
-    align-items: center;
-  } */
   
   .main-header .main-nav li {
    border-inline-end: 1px solid var(--clr6);
@@ -46,12 +35,14 @@
   }
   
   .main-header .main-nav a.active {
-    box-shadow: inset 0 -6px 0 #58c93a;
-    color: #58c93a;
+    box-shadow: inset 0 -6px 0 #c8eceb;
+    color: #c8eceb;
     cursor: auto;
   }
   
   .main-header .main-nav a:hover {
-    box-shadow: inset 0 -6px 0 #58c93a;
+    box-shadow: inset 0 -6px 0 #c8eceb;
+    color: #c8eceb;
+    cursor: auto;
   }
   

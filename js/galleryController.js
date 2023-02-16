@@ -10,7 +10,7 @@ function renderGallery() {
   }
 
   function onSelectedImg(id) {
-    console.log('clicked')
+    // console.log('clicked')
     showMemeCreatingPage()
     hideGallery()
     setImg(id)
@@ -19,8 +19,11 @@ function renderGallery() {
 
   function showMemeCreatingPage() {
     hideGallery()
+    hideMemesPage()
+    renderEmojis()
     const elMemeCreatingPage = document.querySelector('.meme-creating')
     elMemeCreatingPage.hidden = false
+    resetMeme()
   }
   function hideMemeCreatingPage() {
     const elMemeCreatingPage = document.querySelector('.meme-creating')
@@ -30,6 +33,7 @@ function renderGallery() {
   function showGallery() {
     renderGallery()
     hideMemeCreatingPage()
+    hideMemesPage()
     const elHomePage = document.querySelector('.home-page')
     elHomePage.hidden = false
   }
@@ -37,4 +41,16 @@ function renderGallery() {
   function hideGallery() {
     const elHomePage = document.querySelector('.home-page')
     elHomePage.hidden = true
+  }
+
+  function showMemesPage() {
+    hideGallery()
+    hideMemeCreatingPage()
+    renderMemesPage()
+    const elMemesPage = document.querySelector('.memes-page')
+    elMemesPage.hidden = false
+  }
+  function hideMemesPage() {
+    const elMemesPage = document.querySelector('.memes-page')
+    elMemesPage.hidden = true
   }

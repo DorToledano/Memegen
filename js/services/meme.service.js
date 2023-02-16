@@ -1,5 +1,4 @@
-// let gElCanvas
-// let gCtx
+
 
 var gKeywordSearchCountMap = { funny: 12, dog: 20, politics: 2 }
 var gImgs = [
@@ -31,6 +30,24 @@ var gMeme = {
   ],
 }
 
+function resetMeme(){
+  gMeme = {
+    selectedImgId: 5,
+    selectedLineIdx: 0,
+    lines: [
+      {
+        txt: 'Change meme text →',
+        size: 40,
+        align: 'left',
+        color: 'black',
+        diff:0,
+        // x:50,
+        // y:50,
+      },
+    ],
+  }
+}
+
 function setImg(id) {
   gMeme.selectedImgId = id
 }
@@ -55,9 +72,9 @@ function setLineTxt(newTxt) {
 function addLine() {
   gMeme.lines.push({
     txt: 'Type here',
-    size: 30,
+    size: 40,
     align: 'center',
-    color: 'white',
+    color: 'black',
     diff:0,
   })
 }
@@ -88,6 +105,16 @@ function changeAlign(align) {
   gMeme.lines[gMeme.selectedLineIdx].align = align
 }
 
+function addEmoji(elBtn){
+  gMeme.lines.push({
+    txt: `${elBtn.innerText}`,
+    size: 50,
+    align: 'center',
+    color: 'black',
+    diff:0,
+  })
+}
+
 function switchLine() {
   if (gMeme.lines.length === 1) return
   if (gMeme.selectedLineIdx < gMeme.lines.length - 1) gMeme.selectedLineIdx++
@@ -103,3 +130,10 @@ function getLineTxt() {
 function getLine(idx) {
   return gMeme.lines[idx]
 }
+
+function addNewMeme(meme) {
+  gMemes = [...gMemes, { src: meme.src }]
+
+  saveMemes()
+}
+
