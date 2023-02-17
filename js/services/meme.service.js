@@ -34,6 +34,7 @@ var gMeme = {
       diff:0,
       x:50,
       y:50,
+      isDrag:false,
     },
   ],
 }
@@ -51,6 +52,8 @@ function resetMeme(){
         diff:0,
         x:50,
         y:50,
+       isDrag:false,
+
       },
     ],
   }
@@ -86,6 +89,7 @@ function addLine() {
     diff:0,
     x:200,
     y:200,
+    isDrag:false,
   })
 }
 
@@ -166,9 +170,37 @@ function getLine(idx) {
   return gMeme.lines[idx]
 }
 
-function addNewMeme(meme) {
-  gMemes = [...gMemes, { src: meme.src }]
-
-  saveMemes()
+function getCurrLine() {
+  return gMeme.lines[gMeme.selectedLineIdx]
 }
+
+//Check if the click is inside the circle 
+function isLineClicked(clickedPos) {
+  const line = getCurrLine()
+  const metrics = gCtx.measureText(line.txt);
+  const txtWidth = metrics.width
+  // const fontHeight = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent;
+  const actualHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
+
+  const { x,y } = line
+  console.log('x,y',x,y)
+  // Calc the distance between two dots
+  const distance = Math.sqrt((x - clickedPos.x) ** 2 + (y- clickedPos.y) ** 2)
+  // console.log('distance', distance)
+  //If its smaller then the radius of the circle we are inside
+  return distance <= txtWidth && distance <= actualHeight
+}
+
+
+function setLineDrag(isDrag) {
+  const line = getCurrLine()
+  line.isDrag = isDrag
+}
+
+// Move the circle in a delta, diff from the pervious pos
+function moveLine(dx, dy) {
+  gMeme.lines[gMeme.selectedLineIdx].x += dx
+  gMeme.lines[gMeme.selectedLineIdx].y += dy
+}
+
 

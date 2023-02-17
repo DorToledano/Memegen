@@ -4,11 +4,14 @@ let gCurrShape = 'rect'
 let isDecreaseLineHeight = false
 let isIncreaseLineHeight = false
 const MEMES_DB = 'memes'
+let gStartPos
+const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 function init() {
   showGallery()
   gElCanvas = document.querySelector('#my-canvas')
   gCtx = gElCanvas.getContext('2d')
+  addListeners()
 }
 
 // function getCurrImg(){
@@ -324,7 +327,6 @@ function renderImg(img) {
   //   changeInputTxt()
   // }
 }
-
 function getEvPos(ev) {
   // Gets the offset pos , the default pos
   let pos = {
@@ -345,3 +347,60 @@ function getEvPos(ev) {
   }
   return pos
 }
+
+function onDown(ev) {
+  // console.log('Down')
+  // Get the ev pos from mouse or touch
+  const pos = getEvPos(ev)
+  // console.log('pos', pos)
+  if (!isLineClicked(pos)) return
+
+  setLineDrag(true)
+  //Save the pos we start from
+  gStartPos = pos
+  document.body.style.cursor = 'grabbing'
+}
+
+function onMove(ev) {
+  const { isDrag } = getCurrLine()
+  if (!isDrag) return
+
+  const pos = getEvPos(ev)
+  // Calc the delta , the diff we moved
+  const dx = pos.x - gStartPos.x
+  const dy = pos.y - gStartPos.y
+  moveLine(dx, dy)
+  // Save the last pos , we remember where we`ve been and move accordingly
+  gStartPos = pos
+  // The canvas is render again after every move
+  renderMeme()
+}
+
+function onUp() {
+  // console.log('Up')
+  setLineDrag(false)
+  document.body.style.cursor = 'grab'
+}
+
+function addListeners() {
+  addMouseListeners()
+  addTouchListeners()
+  //Listen for resize ev
+  window.addEventListener('resize', () => {
+    init()
+  })
+}
+
+function addMouseListeners() {
+  gElCanvas.addEventListener('mousedown', onDown)
+  gElCanvas.addEventListener('mousemove', onMove)
+  gElCanvas.addEventListener('mouseup', onUp)
+}
+
+function addTouchListeners() {
+  gElCanvas.addEventListener('touchstart', onDown)
+  gElCanvas.addEventListener('touchmove', onMove)
+  gElCanvas.addEventListener('touchend', onUp)
+}
+
+

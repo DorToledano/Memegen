@@ -21,7 +21,8 @@
 @import "components/card.css";
 @import "components/home-page.css";
 
-
+/* COMPONENTS : saved-memes */
+@import "components/memes-page.css";
 
 
 /* @import "components/modal.css"; */
