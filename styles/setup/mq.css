@@ -8,7 +8,7 @@
   .card .editor{
     flex-direction: column;
     align-items: flex-start;
-    background-color: black;
+    /* background-color: black; */
     padding: 2em 1em;
     width: 600px;
     border-radius: 3em;
@@ -164,7 +164,7 @@
     .card .editor{
       flex-direction: column;
       align-items: flex-start;
-      background-color: black;
+      /* background-color: black; */
       padding: 2em 1em;
       width: 600px;
       border-radius: 3em;
@@ -223,12 +223,13 @@
     .card .editor{
       flex-direction: column;
       align-items: flex-start;
-      background-color: black;
+      background-color: var(--clr5);
+
       padding: 3.1em;
       /* border-radius: 3em; */
       width: 100%;
     }
-
+  
     
   }
   

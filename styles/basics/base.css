@@ -29,11 +29,7 @@
   }
   
 
-   .emojis button {
-    padding: 0;
-    border: 0;
-    background-color: transparent;
-   }
+  
 
    .saved-memes-container img {
     width:300px;
@@ -44,3 +40,33 @@
     gap: 30px;
     flex-wrap: wrap;
   }
+  
+  .home-page img:hover{
+    /* border: #3f4044 10px; */
+   box-shadow: 0 0 5px #3f4044, 0 0 25px #3f4044, 0 0 50px #3f4044, 0 0 200px #3f4044;
+
+  }
+  .home-page img::after{
+    content: 'press me';
+ 
+  }
+
+  .card .editor{
+    background-color: #085c74b0;
+  }
+
+  .emojis button {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    
+   }
+
+  .emojis >*:hover {
+    scale: 1.3;
+
+  }
+  /* input .image{
+    margin-block-start: 20px;
+  } */
+  

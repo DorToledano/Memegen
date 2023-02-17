@@ -48,6 +48,7 @@
     width: fit-content;
     margin-block-start: auto;
     margin-inline: auto;
+    color: var(--clr2);
   }
   
   .card .import-btns .file-input {
@@ -57,15 +58,16 @@
 
   .card .emojis{
     font-size: 4em;
-    grid-column: 2;
-    grid-row: 3;
-    margin-block-start: auto;
-    height: 30%;
-    overflow-y: scroll;
     flex-wrap: wrap;
-    
   }
-  
+
+  .card .emojis-container button:not(.emojis button){
+    font-size: 2em;
+    background-color: transparent;
+    border: transparent;
+  }
+
+
 
   
   

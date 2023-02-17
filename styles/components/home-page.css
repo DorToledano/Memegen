@@ -1,5 +1,19 @@
 .home-page .search-bar{
+    margin-block: 30px;
     grid-area: "serach";
+  
+}
+
+.home-page .search-bar #img-search{
+    width: 400px;
+    height: 30px;
+    font-size: 1em;
+    padding: 5px;
+  
+}
+
+.home-page .search-bar label{
+   font-size: 2em;
 }
 
 .home-page .search-by-keywords{
@@ -16,6 +30,6 @@
 }
 .home-page .gallery img{
   width: 100%;
-
+    transition: .8s;
 }
 

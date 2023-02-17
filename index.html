@@ -47,17 +47,17 @@
 
     </header>
 
-    <!-- Photoes gallery page-->
-    <main class="home-page" >
+    <!-- Photos gallery page-->
+    <main class="home-page">
         <section class="search-bar">
-            <label for="img-search">Choose an image:</label>
+            <label for="img-search">Look for meme image:</label>
             <input id="img-search" type="text" placeholder="Search">
         </section>
         <ul class="search-by-keywords clean-list flex">
             <li><a href="#">happy</a></li>
             <li><a href="#">sad</a></li>
-            <li><a href="#" >dogs</a></li>
-        </ul> 
+            <li><a href="#">dogs</a></li>
+        </ul>
         <section class="gallery grid">
             <!-- <img src="meme-imgs (square)/1.jpg" alt="">
             <img src="meme-imgs (square)/2.jpg" alt="">
@@ -67,7 +67,7 @@
     </main>
 
     <!-- meme editing page-->
-    <main class="meme-creating" >
+    <main class="meme-creating">
         <main class="main-content">
             <div class="card card-layout">
                 <div class="canvas-container">
@@ -76,46 +76,68 @@
                 <section class="editor flex">
 
                     <div class="card-input">
-                        <input class="txt" type="text" placeholder="Write meme text here" oninput="onSetLineTxt(this.value)">
+                        <input class="txt" type="text" placeholder="Write meme text here"
+                            oninput="onSetLineTxt(this.value)">
                     </div>
-    
-                    
+
                     <div class="text-features flex space-between">
                         <div class="btns-container flex space-between">
-                            <button class="up-down-btn btn-round" onclick="isIncreaseLineHt('true')"><i class="fa-solid fa-arrow-up"></i></button>
-                            <button class="up-down-btn btn-round" onclick="isDecreaseLineHt('true')"><i class="fa-solid fa-arrow-down"></i></button>
-                            <button class="up-down-btn btn-round" onclick="onSwitchLine()"><i class="fa-solid fa-arrows-up-down"></i></button>
-                            <button class="add-line-btn btn-round" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
-                            <button class="delete-line-btn btn-round" onclick="onDeleteLine()"><i class="fa-solid fa-trash-can"></i></button>
-        
+                            <button class="up-down-btn btn-round" onclick="isIncreaseLineHt('true')"><i
+                                    class="fa-solid fa-arrow-up"></i></button>
+                            <button class="up-down-btn btn-round" onclick="isDecreaseLineHt('true')"><i
+                                    class="fa-solid fa-arrow-down"></i></button>
+                            <button class="up-down-btn btn-round" onclick="onSwitchLine()"><i
+                                    class="fa-solid fa-arrows-up-down"></i></button>
+                            <button class="add-line-btn btn-round" onclick="onAddLine()"><i
+                                    class="fa-solid fa-plus"></i></button>
+                            <button class="delete-line-btn btn-round" onclick="onDeleteLine()"><i
+                                    class="fa-solid fa-trash-can"></i></button>
+
                         </div>
                         <section class="change-size-btns">
                             <button class="increaseSize-btn btn-round" onclick="onSetFont(5)">A+</button>
                             <button class="decreaseSize-btn btn-round" onclick="onSetFont(-5)">A-</button>
                         </section>
                         <section class="align-txt-btns">
-                            <button class="btn-round" onclick="onChangeAlign('left')"><i class="fa-solid fa-align-left"></i></button>
-                            <button class="btn-round" onclick="onChangeAlign('center')"><i class="fa-solid fa-align-center"></i></button>
-                            <button class="btn-round" onclick="onChangeAlign('right')"><i class="fa-solid fa-align-right"></i></button>
+                            <button class="btn-round" onclick="onChangeAlign('left')"><i
+                                    class="fa-solid fa-align-left"></i></button>
+                            <button class="btn-round" onclick="onChangeAlign('center')"><i
+                                    class="fa-solid fa-align-center"></i></button>
+                            <button class="btn-round" onclick="onChangeAlign('right')"><i
+                                    class="fa-solid fa-align-right"></i></button>
                         </section>
                         <section>
-                            <button  class="btn-round"><i class="fa-solid fa-palette"> <input type="color" name="" id="" oninput="onChangeColor(this.value)"></i></button>
-    
+                            <button class="btn-round"><i class="fa-solid fa-palette"> <input type="color" name="" id=""
+                                        oninput="onChangeColor(this.value)"></i></button>
+                            <button class="btn-round"><i class="fa-solid fa-font"> <input type="text" name="" id=""
+                                      placeholder="Choose font"  oninput="onChangeFont(this.value)"></i></button>
+
                         </section>
-    
+                        
+
                     </div>
-                    <section class="emojis flex space-between ">
-                        <!-- <button onclick="OnAddEmoji()">🥲</button> 
-                        😍😜😎😡😢😶‍🌫️🤬🤯 -->
-                    </section>
-                    <section class="import-btns">
-                        <button class="card-button btn-round" onclick="downloadImg(this)">Download</button>
+
+                    <div class="emojis-container flex"> 
+                        <button onclick="onChangePage(-1)" class="btn-page prev"><i class="fa-solid fa-arrow-left"></i></button>
+                        <section class="emojis flex space-between "></section>
+                        <button onclick="onChangePage(1)" class="btn-page next"><i class="fa-solid fa-arrow-right"></i></button>
+
+                    </div>
+
+
+                    <section class="import-btns flex">
+                        <!-- <button class="card-button btn-round" onclick="onDownloadImg(this)">Download</button> -->
+                        
+                        <a href="#" onclick="onDownloadImg(this)" download="my-img.jpg">
+                                <button class="card-button btn-round btn-download">Download</button>
+                        </a>
+                            
                         <button class="card-button btn-round" onclick="onUploadImg()">Share</button>
                         <button class="card-button btn-round" onclick="onSaveMemeData()">Save</button>
-                        <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
-    
-    
+                        <input class="image" type="file" class="file-input btn" name="image"
+                            onchange="onImgInput(event)" />
                     </section>
+
                 </section>
             </div>
 
@@ -125,7 +147,7 @@
     </main>
 
     <!-- saved memes page -->
-    <main class="memes-page "> 
+    <main class="memes-page ">
         <h1>My Memes</h1>
         <section class="saved-memes-container ">
             <!-- <img src="" alt=""> -->
@@ -145,7 +167,7 @@
     <script src="js/memeController.js"></script>
     <script src="js/savedMemesController.js"></script>
     <script src="js/galleryController.js"></script>
-    
+
     <script src="js/main.js"></script>
 </body>
 

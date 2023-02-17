@@ -5,7 +5,6 @@ let isDecreaseLineHeight = false
 let isIncreaseLineHeight = false
 const MEMES_DB = 'memes'
 
-
 function init() {
   showGallery()
   gElCanvas = document.querySelector('#my-canvas')
@@ -31,12 +30,15 @@ function renderMeme() {
     gMeme.lines.forEach((line, idx) =>
       drawText(line.txt, line.color, line.size, meme.font, line.align, idx)
     )
+    isDecreaseLineHeight = false
+    isIncreaseLineHeight = false
 
     changeInputTxt()
   }
 }
 
 function drawText(text, color, size, font = 'arial', align, lineIdx) {
+  const meme = getMeme()
   gCtx.lineWidth = 1
   gCtx.strokeStyle = `white`
   gCtx.fillStyle = `${color}`
@@ -44,60 +46,120 @@ function drawText(text, color, size, font = 'arial', align, lineIdx) {
   gCtx.textAlign = `${align}`
   gCtx.textBaseline = 'middle'
 
-  const { x, y } = setTxtPos(lineIdx)
+  const x = meme.lines[lineIdx].x
+  const y = meme.lines[lineIdx].y
   gCtx.fillText(text, x, y)
   gCtx.strokeText(text, x, y)
-  isDecreaseLineHeight = false
-  isIncreaseLineHeight = false
-  gCtx.save()
 }
 
-// function onSetTxtPos(diff) {
-//   // supposed to make input go up/down on page - doesnt work
-//   const meme = getMeme()
-//   console.log('meme', meme)
-//   const lineIdx = meme.selectedLineIdx
-//   setTxtPos(lineIdx, (diff = 0))
-//   renderMeme()
+// function drawText(text, color, size, font = 'arial', align, lineIdx) {
+//   gCtx.lineWidth = 1
+//   gCtx.strokeStyle = `white`
+//   gCtx.fillStyle = `${color}`
+//   gCtx.font = `${size}px ${font}`
+//   gCtx.textAlign = `${align}`
+//   gCtx.textBaseline = 'middle'
+
+//   const { x, y } = setTxtPos(lineIdx)
+//   gCtx.fillText(text, x, y)
+//   gCtx.strokeText(text, x, y)
+
+//   // isDecreaseLineHeight = false
+//   // isIncreaseLineHeight = false
+//   // gCtx.save()
 // }
 
 function isDecreaseLineHt(bool) {
   isDecreaseLineHeight = bool
+  const meme = getMeme()
+  const lineIdx = meme.selectedLineIdx
+  setTxtPos(lineIdx)
   renderMeme()
 }
 
 function isIncreaseLineHt(bool) {
   isIncreaseLineHeight = bool
+  const meme = getMeme()
+  const lineIdx = meme.selectedLineIdx
+  setTxtPos(lineIdx)
   renderMeme()
 }
 
 function setTxtPos(lineIdx) {
-  const meme = getMeme()
   const line = getLine(lineIdx)
-  // console.log('line.diff', line.diff)
-  if (line.diff < 0) line.diff = 0
-  else if (line.diff >= gElCanvas.height - 100)
-    line.diff = gElCanvas.height - 100
-  if (isDecreaseLineHeight) line.diff += 5
-  if (isIncreaseLineHeight) line.diff += -5
+
+  if (isDecreaseLineHeight) line.diff += 10
+  if (isIncreaseLineHeight) line.diff += -10
+
   switch (lineIdx) {
     case 0:
-      return { x: 50, y: 50 + meme.lines[0].diff }
-    case 1:
-      return { x: 115, y: 500 + meme.lines[1].diff }
-    default:
-      return { x: 200, y: 200 + meme.lines[lineIdx].diff }
-  }
+      line.x = 50
+      line.y = 50 + line.diff
+      if (line.y < 50) {
+        line.y = 50 
+        line.diff=0
+      }
+      else if (line.y >= gElCanvas.height - 50) {
+        line.y = gElCanvas.height - 50
+        line.diff=0
+      }
+      break
 
-  // switch (lineIdx) {
-  //     case 0:
-  //         return { x: 50, y: 50 }
-  //     case 1:
-  //         return { x: 150, y: 500 }
-  //     default:
-  //         return { x: 200, y: 200 }
-  // }
+    case 1:
+      line.x = 150
+      line.y = gElCanvas.height - 50 + line.diff
+      if (line.y < 50) {
+        line.y = 50 
+        line.diff=0
+      }
+      else if (line.y >= gElCanvas.height - 50) {
+        line.y = gElCanvas.height - 50
+        line.diff=0
+      }
+      break
+
+    default:
+      line.x = gElCanvas.width / 2
+      line.y = gElCanvas.height / 2 + line.diff
+      if (line.y < 50) {
+        line.y = 50 
+        line.diff=0
+      }
+      else if (line.y >= gElCanvas.height - 50) {
+        line.y = gElCanvas.height - 50
+        line.diff=0
+      }
+      break
+  }
 }
+
+// function setTxtPos(lineIdx) {
+//   const meme = getMeme()
+//   const line = getLine(lineIdx)
+
+//   if (line.diff < 0) line.diff = 0
+//   else if (line.diff >= gElCanvas.height - 100)line.diff = gElCanvas.height - 100
+//   if (isDecreaseLineHeight) line.diff += 5
+//   if (isIncreaseLineHeight) line.diff += -5
+
+//   switch (lineIdx) {
+//     case 0:
+//       return { x: 50, y: 50 + meme.lines[lineIdx].diff }
+//     case 1:
+//       return { x: 115, y: 500 + meme.lines[lineIdx].diff }
+//     default:
+//       return { x: 200, y: 200 + meme.lines[lineIdx].diff }
+//   }
+
+// switch (lineIdx) {
+//     case 0:
+//         return { x: 50, y: 50 }
+//     case 1:
+//         return { x: 150, y: 500 }
+//     default:
+//         return { x: 200, y: 200 }
+// }
+// }
 
 function changeInputTxt() {
   const txt = getLineTxt()
@@ -122,6 +184,9 @@ function onSwitchLine() {
 
 function onAddLine() {
   addLine()
+  const meme = getMeme()
+  const lineIdx = meme.lines.length - 1
+  setTxtPos(lineIdx)
   switchLine()
   renderMeme()
 }
@@ -136,6 +201,11 @@ function onSetFont(diff) {
   renderMeme()
 }
 
+function onChangeFont(fontName){
+  changeFontName(fontName)
+  renderMeme()
+}
+
 function onChangeColor(color) {
   setColor(color)
   renderMeme()
@@ -146,9 +216,14 @@ function onChangeAlign(align) {
   renderMeme()
 }
 
-function OnAddEmoji(elBtn){
-    addEmoji(elBtn)
-    renderMeme()
+function onChangePage(num) {
+  changePage(num)
+  renderEmojis()
+}
+
+function OnAddEmoji(elBtn) {
+  addEmoji(elBtn)
+  renderMeme()
 }
 
 // function clearCanvas() {
@@ -204,7 +279,8 @@ function doUploadImg(imgDataUrl, onSuccess) {
   XHR.send(formData)
 }
 
-function downloadImg(elLink) {
+function onDownloadImg(elLink) {
+  console.log('download')
   const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
   elLink.href = imgContent
 }
@@ -236,7 +312,6 @@ function loadImageFromInput(ev, onImageReady) {
 function renderImg(img) {
   // // Draw the img on the canvas
   gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-
   // const img = new Image()
   // img.src = gImgSrc
   // // console.log('img',img)
@@ -270,4 +345,3 @@ function getEvPos(ev) {
   }
   return pos
 }
-

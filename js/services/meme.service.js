@@ -13,19 +13,27 @@ var gImgs = [
   { id: 9, url: 'meme-imgs (square)/9.jpg', keywords: ['cute', 'dog'] },
   { id: 10, url: 'meme-imgs (square)/10.jpg', keywords: ['cute', 'dog'] },
   { id: 11, url: 'meme-imgs (square)/11.jpg', keywords: ['cute', 'dog'] },
+  { id: 12, url: 'meme-imgs (square)/12.jpg', keywords: ['cute', 'dog'] },
+  { id: 13, url: 'meme-imgs (square)/13.jpg', keywords: ['cute', 'dog'] },
+  { id: 14, url: 'meme-imgs (square)/14.jpg', keywords: ['cute', 'dog'] },
+  { id: 15, url: 'meme-imgs (square)/15.jpg', keywords: ['cute', 'dog'] },
+  { id: 16, url: 'meme-imgs (square)/16.jpg', keywords: ['cute', 'dog'] },
+  { id: 17, url: 'meme-imgs (square)/17.jpg', keywords: ['cute', 'dog'] },
+  { id: 18, url: 'meme-imgs (square)/18.jpg', keywords: ['cute', 'dog'] },
 ]
 var gMeme = {
   selectedImgId: 5,
   selectedLineIdx: 0,
+  font:'Arial',
   lines: [
     {
-      txt: 'Change meme text →',
+      txt: 'Change meme text',
       size: 40,
       align: 'left',
       color: 'black',
       diff:0,
-      // x:50,
-      // y:50,
+      x:50,
+      y:50,
     },
   ],
 }
@@ -36,13 +44,13 @@ function resetMeme(){
     selectedLineIdx: 0,
     lines: [
       {
-        txt: 'Change meme text →',
+        txt: 'Change meme text ',
         size: 40,
         align: 'left',
         color: 'black',
         diff:0,
-        // x:50,
-        // y:50,
+        x:50,
+        y:50,
       },
     ],
   }
@@ -76,6 +84,8 @@ function addLine() {
     align: 'center',
     color: 'black',
     diff:0,
+    x:200,
+    y:200,
   })
 }
 
@@ -94,6 +104,10 @@ function setText() {
   document.querySelector('.txt').value = txt
 }
 
+function changeFontName(fontName){
+  gMeme.font = fontName
+}
+
 function setColor(newColor) {
   gMeme.lines[gMeme.selectedLineIdx].color = newColor
 }
@@ -102,7 +116,26 @@ function changeFontSize(diff) {
 }
 
 function changeAlign(align) {
-  gMeme.lines[gMeme.selectedLineIdx].align = align
+  // gMeme.lines[gMeme.selectedLineIdx].align = align
+  const line= gMeme.lines[gMeme.selectedLineIdx]
+  const txtWidth = gCtx.measureText(line.txt).width
+  
+  switch (align) {
+    case 'left':
+      if (gMeme.selectedLineIdx===0) line.x = 50
+      else line.x = 150
+      break;
+
+    case 'right':
+      line.x = gElCanvas.height -txtWidth
+      
+      break;
+  
+    default:
+      line.x = gElCanvas.height/2 -txtWidth/2
+      break;
+  }
+
 }
 
 function addEmoji(elBtn){
@@ -112,6 +145,8 @@ function addEmoji(elBtn){
     align: 'center',
     color: 'black',
     diff:0,
+    x:gElCanvas.height/2,
+    y:gElCanvas.width/2,
   })
 }
 
