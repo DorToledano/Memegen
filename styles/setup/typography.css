@@ -1,25 +1,25 @@
 /* BungeeShade-Regular */
 @font-face {
     font-family: BungeeShade;
-    src: url(/fonts/Bungee_Shade/BungeeShade-Regular.ttf);
+    src: url(../../fonts/Bungee_Shade/BungeeShade-Regular.ttf);
   }
 
   /* Quicksand-Regular */
   @font-face {
     font-family: Quicksand-Regular;
-    src: url(/fonts/Quicksand/Quicksand-Regular.ttf);
+    src: url(../../fonts/Quicksand/Quicksand-Regular.ttf);
   }
   
   /* Quicksand-Bold */
   @font-face {
     font-family: Quicksand-Bold;
-    src: url(/fonts/Quicksand/Quicksand-Bold.ttf);
+    src: url(../../fonts/Quicksand/Quicksand-Bold.ttf);
   }
 
   /*FredokaOne-Regular */
   @font-face {
     font-family: FredokaOne-Regular;
-    src: url(/fonts/Fredoka_One/FredokaOne-Regular.ttf);
+    src: url(../../fonts/Fredoka_One/FredokaOne-Regular.ttf);
   }
 
   
