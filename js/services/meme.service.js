@@ -1,5 +1,3 @@
-
-
 var gKeywordSearchCountMap = { funny: 12, dog: 20, politics: 2 }
 var gImgs = [
   { id: 1, url: 'meme-imgs (square)/1.jpg', keywords: ['funny', 'politics'] },
@@ -24,22 +22,22 @@ var gImgs = [
 var gMeme = {
   selectedImgId: 5,
   selectedLineIdx: 0,
-  font:'Arial',
+  font: 'Arial',
   lines: [
     {
       txt: 'Change meme text',
       size: 40,
       align: 'left',
       color: 'black',
-      diff:0,
-      x:50,
-      y:50,
-      isDrag:false,
+      diff: 0,
+      x: 50,
+      y: 50,
+      isDrag: false,
     },
   ],
 }
 
-function resetMeme(){
+function resetMeme() {
   gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
@@ -49,11 +47,10 @@ function resetMeme(){
         size: 40,
         align: 'left',
         color: 'black',
-        diff:0,
-        x:50,
-        y:50,
-       isDrag:false,
-
+        diff: 0,
+        x: 50,
+        y: 50,
+        isDrag: false,
       },
     ],
   }
@@ -82,14 +79,14 @@ function setLineTxt(newTxt) {
 
 function addLine() {
   gMeme.lines.push({
-    txt: 'Type here',
+    txt: '',
     size: 40,
     align: 'center',
     color: 'black',
-    diff:0,
-    x:200,
-    y:200,
-    isDrag:false,
+    diff: 0,
+    x: 200,
+    y: 200,
+    isDrag: false,
   })
 }
 
@@ -108,7 +105,7 @@ function setText() {
   document.querySelector('.txt').value = txt
 }
 
-function changeFontName(fontName){
+function changeFontName(fontName) {
   gMeme.font = fontName
 }
 
@@ -121,36 +118,35 @@ function changeFontSize(diff) {
 
 function changeAlign(align) {
   // gMeme.lines[gMeme.selectedLineIdx].align = align
-  const line= gMeme.lines[gMeme.selectedLineIdx]
+  const line = gMeme.lines[gMeme.selectedLineIdx]
   const txtWidth = gCtx.measureText(line.txt).width
-  
+
   switch (align) {
     case 'left':
-      if (gMeme.selectedLineIdx===0) line.x = 50
+      if (gMeme.selectedLineIdx === 0) line.x = 50
       else line.x = 150
-      break;
+      break
 
     case 'right':
-      line.x = gElCanvas.height -txtWidth
-      
-      break;
-  
-    default:
-      line.x = gElCanvas.height/2 -txtWidth/2
-      break;
-  }
+      line.x = gElCanvas.height - txtWidth
 
+      break
+
+    default:
+      line.x = gElCanvas.height / 2 - txtWidth / 2
+      break
+  }
 }
 
-function addEmoji(elBtn){
+function addEmoji(elBtn) {
   gMeme.lines.push({
     txt: `${elBtn.innerText}`,
     size: 50,
     align: 'center',
     color: 'black',
-    diff:0,
-    x:gElCanvas.height/2,
-    y:gElCanvas.width/2,
+    diff: 0,
+    x: gElCanvas.height / 2,
+    y: gElCanvas.width / 2,
   })
 }
 
@@ -174,23 +170,39 @@ function getCurrLine() {
   return gMeme.lines[gMeme.selectedLineIdx]
 }
 
-//Check if the click is inside the circle 
+//Check if the click is inside the circle
 function isLineClicked(clickedPos) {
   const line = getCurrLine()
-  const metrics = gCtx.measureText(line.txt);
+  const metrics = gCtx.measureText(line.txt)
   const txtWidth = metrics.width
-  // const fontHeight = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent;
-  const actualHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
+  const fontHeight =
+    metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent
+  // const actualHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
 
-  const { x,y } = line
-  console.log('x,y',x,y)
+  const { x, y } = line
   // Calc the distance between two dots
-  const distance = Math.sqrt((x - clickedPos.x) ** 2 + (y- clickedPos.y) ** 2)
-  // console.log('distance', distance)
+  // const distance = Math.sqrt((x - clickedPos.x) ** 2 + (y- clickedPos.y) ** 2)
   //If its smaller then the radius of the circle we are inside
-  return distance <= txtWidth && distance <= actualHeight
-}
+  // return distance <= txtWidth || distance <= fontHeight
+  if (
+    gMeme.selectedLineIdx === 0 &&
+    clickedPos.x >= x &&
+    clickedPos.x <= x + txtWidth &&
+    clickedPos.y <= y + fontHeight / 2 &&
+    clickedPos.y >= y
+  )
+    return true
+  if (
+    gMeme.selectedLineIdx !== 0 &&
+    clickedPos.x >= x - txtWidth / 2 &&
+    clickedPos.x <= x + txtWidth / 2 &&
+    clickedPos.y >= y - fontHeight / 2 &&
+    clickedPos.y <= y + fontHeight / 2
+  )
+    return true
 
+  // return clickedPos.x >= x && clickedPos.x <= x+txtWidth && clickedPos.y <= y + fontHeight/2 && clickedPos.y>=y
+}
 
 function setLineDrag(isDrag) {
   const line = getCurrLine()
@@ -199,8 +211,7 @@ function setLineDrag(isDrag) {
 
 // Move the circle in a delta, diff from the pervious pos
 function moveLine(dx, dy) {
+  // console.log('gMeme.lines[gMeme.selectedLineIdx]',gMeme.lines[gMeme.selectedLineIdx])
   gMeme.lines[gMeme.selectedLineIdx].x += dx
   gMeme.lines[gMeme.selectedLineIdx].y += dy
 }
-
-

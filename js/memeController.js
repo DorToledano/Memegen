@@ -226,6 +226,7 @@ function onChangePage(num) {
 
 function OnAddEmoji(elBtn) {
   addEmoji(elBtn)
+  switchLine()
   renderMeme()
 }
 
@@ -352,7 +353,7 @@ function onDown(ev) {
   // console.log('Down')
   // Get the ev pos from mouse or touch
   const pos = getEvPos(ev)
-  // console.log('pos', pos)
+  console.log('pos', pos)
   if (!isLineClicked(pos)) return
 
   setLineDrag(true)
@@ -364,14 +365,18 @@ function onDown(ev) {
 function onMove(ev) {
   const { isDrag } = getCurrLine()
   if (!isDrag) return
-
+  
   const pos = getEvPos(ev)
+  // console.log(pos)
+
   // Calc the delta , the diff we moved
   const dx = pos.x - gStartPos.x
   const dy = pos.y - gStartPos.y
   moveLine(dx, dy)
+
   // Save the last pos , we remember where we`ve been and move accordingly
   gStartPos = pos
+
   // The canvas is render again after every move
   renderMeme()
 }

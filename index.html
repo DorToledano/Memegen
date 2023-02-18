@@ -82,33 +82,33 @@
 
                     <div class="text-features flex space-between">
                         <div class="btns-container flex space-between">
-                            <button class="up-down-btn btn-round" onclick="isIncreaseLineHt('true')"><i
+                            <button class="up-down-btn btn-round" onclick="isIncreaseLineHt('true')" title="click to move line up"><i
                                     class="fa-solid fa-arrow-up"></i></button>
-                            <button class="up-down-btn btn-round" onclick="isDecreaseLineHt('true')"><i
+                            <button class="up-down-btn btn-round" onclick="isDecreaseLineHt('true')" title="click to move line down"><i
                                     class="fa-solid fa-arrow-down"></i></button>
-                            <button class="up-down-btn btn-round" onclick="onSwitchLine()"><i
+                            <button class="up-down-btn btn-round" onclick="onSwitchLine()" title="click to switch line"><i
                                     class="fa-solid fa-arrows-up-down"></i></button>
-                            <button class="add-line-btn btn-round" onclick="onAddLine()"><i
+                            <button class="add-line-btn btn-round" onclick="onAddLine()" title="click to add a line"><i
                                     class="fa-solid fa-plus"></i></button>
-                            <button class="delete-line-btn btn-round" onclick="onDeleteLine()"><i
+                            <button class="delete-line-btn btn-round" onclick="onDeleteLine()" title="click to delete the line"><i
                                     class="fa-solid fa-trash-can"></i></button>
 
                         </div>
                         <section class="change-size-btns">
-                            <button class="increaseSize-btn btn-round" onclick="onSetFont(5)">A+</button>
-                            <button class="decreaseSize-btn btn-round" onclick="onSetFont(-5)">A-</button>
+                            <button class="increaseSize-btn btn-round" onclick="onSetFont(5)" title="click to increase font size">A+</button>
+                            <button class="decreaseSize-btn btn-round" onclick="onSetFont(-5)" title="click to decrease font size">A-</button>
                         </section>
                         <section class="align-txt-btns">
-                            <button class="btn-round" onclick="onChangeAlign('left')"><i
+                            <button class="btn-round" onclick="onChangeAlign('left')" title="click to align text to left"><i
                                     class="fa-solid fa-align-left"></i></button>
-                            <button class="btn-round" onclick="onChangeAlign('center')"><i
+                            <button class="btn-round" onclick="onChangeAlign('center')" title="click to align text to center"><i
                                     class="fa-solid fa-align-center"></i></button>
-                            <button class="btn-round" onclick="onChangeAlign('right')"><i
+                            <button class="btn-round" onclick="onChangeAlign('right')" title="click to align text to right"><i
                                     class="fa-solid fa-align-right"></i></button>
                         </section>
                         <section>
                             <button class="btn-round"><i class="fa-solid fa-palette"> <input type="color" name="" id=""
-                                        oninput="onChangeColor(this.value)"></i></button>
+                                        oninput="onChangeColor(this.value)" title="click to change color"></i></button>
                             <button class="btn-round"><i class="fa-solid fa-font"> <input type="text" name="" id=""
                                       placeholder="Choose font"  oninput="onChangeFont(this.value)"></i></button>
 
@@ -132,8 +132,8 @@
                                 <button class="card-button btn-round btn-download">Download</button>
                         </a>
                             
-                        <button class="card-button btn-round" onclick="onUploadImg()">Share</button>
-                        <button class="card-button btn-round" onclick="onSaveMemeData()">Save</button>
+                        <button class="card-button btn-round" onclick="onUploadImg()" title="click to share on Facebook">Share</button>
+                        <button class="card-button btn-round" onclick="onSaveMemeData()" title="click to save to 'My Memes page'">Save</button>
                         <input class="image" type="file" class="file-input btn" name="image"
                             onchange="onImgInput(event)" />
                     </section>
