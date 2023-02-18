@@ -129,9 +129,19 @@
                         <section>
                             <button class="btn-round"><i class="fa-solid fa-palette"> <input type="color" name="" id=""
                                         oninput="onChangeColor(this.value)" title="click to change color"></i></button>
-                            <button class="btn-round"><i class="fa-solid fa-font"> <input type="text" name="" id=""
-                                      placeholder="Choose font"  oninput="onChangeFont(this.value)"></i></button>
-
+                            <button class="btn-round"><i class="fa-solid fa-font"> 
+                                <input type="text" name="" class="fonts" placeholder="Choose font"  oninput="onChangeFont(this.value)" list="fonts"></i></button>
+                                <datalist id="fonts">
+                                    <option value="arial">
+                                    <option value="times">
+                                    <option value="fantasy">
+                                    <option value="BungeeShade">
+                                    <option value="Quicksand-Regular">
+                                    <option value="cursive">
+                                    <option value="FredokaOne-Regular">
+                                    <option value="monospace">
+                                    
+                                  </datalist>
                         </section>
                         
 

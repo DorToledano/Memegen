@@ -1,41 +1,25 @@
-/* eurofurence */
-/* @font-face {
-    font-family: eurofurence;
-    src: url(/fonts/eurofurence/eurof35.ttf);
-  } */
-  /* lato-bold */
-  /* @font-face {
-    font-family: lato-bold;
-    src: url(/fonts/lato/Lato-Bold.ttf);
-  } */
-  /* lato-regular */
-  /* @font-face {
-    font-family: lato-regular;
-    src: url(/fonts/lato/Lato-Regular.ttf);
-  } */
-  /* font awesome */
-  /* @font-face {
-    font-family: fa;
-    src: url(/fonts/fontAwesome/fa-brands-400.ttf);
-  } */
-  
-  /* .fa::before {
-    font-family: fa;
+/* BungeeShade-Regular */
+@font-face {
+    font-family: BungeeShade;
+    src: url(/fonts/Bungee_Shade/BungeeShade-Regular.ttf);
+  }
+
+  /* Quicksand-Regular */
+  @font-face {
+    font-family: Quicksand-Regular;
+    src: url(/fonts/Quicksand/Quicksand-Regular.ttf);
   }
   
-  .fa.facebook::before {
-    content: "\f39e";
+  /* Quicksand-Bold */
+  @font-face {
+    font-family: Quicksand-Bold;
+    src: url(/fonts/Quicksand/Quicksand-Bold.ttf);
   }
-  
-  .fa.twitter::before {
-    content: "\f099";
+
+  /*FredokaOne-Regular */
+  @font-face {
+    font-family: FredokaOne-Regular;
+    src: url(/fonts/Fredoka_One/FredokaOne-Regular.ttf);
   }
-  
-  .fa.dribble::before {
-    content: "\f17d";
-  }
-  
-  .fa.behance::before {
-    content: "\f1b4";
-  } */
+
   

@@ -151,6 +151,7 @@ function setColor(newColor) {
 }
 function changeFontSize(diff) {
   gMeme.lines[gMeme.selectedLineIdx].size += diff
+  
 }
 
 function changeAlign(align) {
