@@ -7,9 +7,11 @@ const PAGE_SIZE = 3
 
 function toggleModal(){
     document.body.classList.toggle('modal-open'); 
+
 }
 function toggleMenu() {
     document.body.classList.toggle('menu-open');
+    if (document.body.classList.contains('modal-open')) toggleModal()
 }
 
 function renderEmojis(){
@@ -20,9 +22,7 @@ function renderEmojis(){
     document.querySelector('.emojis').innerHTML=strHTML.join(' ')
 }
 
-// function getEmojis(){
-//     return emojis
-// }
+
 
 function getEmojis() {
     const startIdx = gPageIdx * PAGE_SIZE

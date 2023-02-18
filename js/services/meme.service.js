@@ -56,6 +56,15 @@ function resetMeme() {
   }
 }
 
+function setMeme(ImgId,lineIdx,allLines){
+  gMeme = {
+    selectedImgId: ImgId,
+    selectedLineIdx: lineIdx,
+    lines: allLines,
+}
+console.log('gMeme',gMeme)
+}
+
 function setImg(id) {
   gMeme.selectedImgId = id
 }

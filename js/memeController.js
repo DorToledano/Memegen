@@ -14,15 +14,6 @@ function init() {
   addListeners()
 }
 
-// function getCurrImg(){
-//   const meme = getMeme()
-//   let currImg = getImageById(meme.selectedImgId)
-//   const img = new Image()
-//   img.src = currImg.url
-//   return img
-// }
-// var image = getCurrImg()
-
 function renderMeme() {
   const meme = getMeme()
   let currImg = getImageById(meme.selectedImgId)
