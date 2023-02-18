@@ -1,23 +1,26 @@
-var gKeywordSearchCountMap = { funny: 12, dog: 20, politics: 2 }
+let gFilteredImgs
+
+// var gKeywordSearchCountMap = { funny: 12, dog: 20, politics: 2 , cute, baby, dog, sleep,}
+var gKeywordSearchCountMap = {} //funny: 12, dog: 20, politics: 2 ,
 var gImgs = [
   { id: 1, url: 'meme-imgs (square)/1.jpg', keywords: ['funny', 'politics'] },
   { id: 2, url: 'meme-imgs (square)/2.jpg', keywords: ['cute', 'dog'] },
-  { id: 3, url: 'meme-imgs (square)/3.jpg', keywords: ['cute', 'dog'] },
-  { id: 4, url: 'meme-imgs (square)/4.jpg', keywords: ['cute', 'dog'] },
-  { id: 5, url: 'meme-imgs (square)/5.jpg', keywords: ['cute', 'dog'] },
-  { id: 6, url: 'meme-imgs (square)/6.jpg', keywords: ['cute', 'dog'] },
-  { id: 7, url: 'meme-imgs (square)/7.jpg', keywords: ['cute', 'dog'] },
-  { id: 8, url: 'meme-imgs (square)/8.jpg', keywords: ['cute', 'dog'] },
-  { id: 9, url: 'meme-imgs (square)/9.jpg', keywords: ['cute', 'dog'] },
-  { id: 10, url: 'meme-imgs (square)/10.jpg', keywords: ['cute', 'dog'] },
-  { id: 11, url: 'meme-imgs (square)/11.jpg', keywords: ['cute', 'dog'] },
-  { id: 12, url: 'meme-imgs (square)/12.jpg', keywords: ['cute', 'dog'] },
-  { id: 13, url: 'meme-imgs (square)/13.jpg', keywords: ['cute', 'dog'] },
-  { id: 14, url: 'meme-imgs (square)/14.jpg', keywords: ['cute', 'dog'] },
-  { id: 15, url: 'meme-imgs (square)/15.jpg', keywords: ['cute', 'dog'] },
-  { id: 16, url: 'meme-imgs (square)/16.jpg', keywords: ['cute', 'dog'] },
-  { id: 17, url: 'meme-imgs (square)/17.jpg', keywords: ['cute', 'dog'] },
-  { id: 18, url: 'meme-imgs (square)/18.jpg', keywords: ['cute', 'dog'] },
+  { id: 3, url: 'meme-imgs (square)/3.jpg', keywords: ['baby', 'dog'] },
+  { id: 4, url: 'meme-imgs (square)/4.jpg', keywords: ['sleep', 'cat'] },
+  { id: 5, url: 'meme-imgs (square)/5.jpg', keywords: ['baby', 'happy'] },
+  { id: 6, url: 'meme-imgs (square)/6.jpg', keywords: ['man', 'confused'] },
+  { id: 7, url: 'meme-imgs (square)/7.jpg', keywords: ['baby', 'surprise'] },
+  { id: 8, url: 'meme-imgs (square)/8.jpg', keywords: ['man', 'creepy'] },
+  { id: 9, url: 'meme-imgs (square)/9.jpg', keywords: ['baby', 'funny'] },
+  { id: 10, url: 'meme-imgs (square)/10.jpg', keywords: ['politics', 'funny'] },
+  { id: 11, url: 'meme-imgs (square)/11.jpg', keywords: ['man', 'awkward'] },
+  { id: 12, url: 'meme-imgs (square)/12.jpg', keywords: ['man', 'famous'] },
+  { id: 13, url: 'meme-imgs (square)/13.jpg', keywords: ['man', 'famous'] },
+  { id: 14, url: 'meme-imgs (square)/14.jpg', keywords: ['man', 'mission'] },
+  { id: 15, url: 'meme-imgs (square)/15.jpg', keywords: ['man', 'zero'] },
+  { id: 16, url: 'meme-imgs (square)/16.jpg', keywords: ['man', 'funny'] },
+  { id: 17, url: 'meme-imgs (square)/17.jpg', keywords: ['politics', 'scary'] },
+  { id: 18, url: 'meme-imgs (square)/18.jpg', keywords: ['toy', 'scary'] },
 ]
 var gMeme = {
   selectedImgId: 5,
@@ -37,6 +40,27 @@ var gMeme = {
   ],
 }
 
+function filterImgs(keyword){
+  // console.log('filter')
+  let counter=0
+  gFilteredImgs = gImgs.reduce((acc, img) => {
+    if (img.keywords.includes(`${keyword}`)) {
+      counter++
+      if (counter===1) {
+        gKeywordSearchCountMap[keyword]?gKeywordSearchCountMap[keyword]++ :gKeywordSearchCountMap[keyword]=1
+        console.log('in')
+      }
+      acc.push(img);
+    }
+    return acc;
+  }, []);
+  return gFilteredImgs
+}
+
+function getFilterImgs(){
+  return gFilteredImgs
+}
+
 function resetMeme() {
   gMeme = {
     selectedImgId: 5,
@@ -54,6 +78,10 @@ function resetMeme() {
       },
     ],
   }
+}
+
+function getKeywords(){
+  return gKeywordSearchCountMap
 }
 
 function setMeme(ImgId,lineIdx,allLines){

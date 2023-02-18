@@ -14,13 +14,23 @@
 
 .home-page .search-bar label{
    font-size: 2em;
+   
 }
 
 .home-page .search-by-keywords{
     grid-area: "keywords";
     min-height: 100px;
     gap: 20px;
-    /* align-items: center; */
+    background-color: #0a5c75bf;
+   padding-inline: 30px;
+   align-items: center;
+   border-radius: 20px;
+    margin-block-end: 20px;
+}
+
+.home-page .search-by-keywords a{
+    text-decoration: none;
+    color: var(--clr-3);
 }
 
 .home-page .gallery{
@@ -35,6 +45,7 @@
 
 .home-page .gallery img{
   width: 100%;
-    transition: .8s;
+transition: .8s;
+max-width: 400px;
 }
 

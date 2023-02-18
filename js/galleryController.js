@@ -1,12 +1,25 @@
 
 
 function renderGallery() {
-    const images = getImages()
-    const strHTMLs = images.map(
-      (img, idx) =>
-        `<img src="meme-imgs (square)/${idx + 1}.jpg" onclick="onSelectedImg(${img.id})" />`
-    )
-    document.querySelector('.gallery').innerHTML = strHTMLs.join('')
+    if (!getFilterImgs() || !getFilterImgs().length){
+      const images= getImages() 
+      const strHTMLs = images.map(
+        (img, idx) =>
+          `<img src="meme-imgs (square)/${idx + 1}.jpg" onclick="onSelectedImg(${img.id})" />`
+      )
+  
+      document.querySelector('.gallery').innerHTML = strHTMLs.join('')
+      
+    } else {
+      const images= getFilterImgs()
+        const strHTMLs = images.map(
+          (img) =>
+            `<img src="meme-imgs (square)/${img.id}.jpg" onclick="onSelectedImg(${img.id})" />`
+        )
+      document.querySelector('.gallery').innerHTML = strHTMLs.join('')
+    }
+    renderKeywords()
+      
   }
 
   function onSelectedImg(id) {
@@ -53,4 +66,25 @@ function renderGallery() {
   function hideMemesPage() {
     const elMemesPage = document.querySelector('.memes-page')
     elMemesPage.hidden = true
+  }
+
+  function onFilterImgs(keyword){
+    filterImgs(keyword)
+    renderGallery()
+  }
+
+  function renderKeywords(){
+    let strHtml=''
+    const keywordsMap= getKeywords() 
+    for (const key in keywordsMap) {
+      strHtml+=`<li><a class="key ${key}" href="#">${key}</a></li>`
+    }
+    document.querySelector('.search-by-keywords').innerHTML = strHtml
+    for (let key in keywordsMap) {
+      // console.log('keywordsMap[key]',keywordsMap[key])
+      document.querySelector(`.search-by-keywords .${key}`).style.fontSize = `calc(1em + 4*${keywordsMap[key]}px)`
+    }
+    // const elKeywords= document.querySelectorAll('.search-by-keywords a .key')
+    // elKeywords.forEach(key=>document.querySelector(`.search-by-keywords a key-${key}`).style.fontSize = `calc(1em + 5*${keywordsMap[key]}px)`)
+    
   }

@@ -22,8 +22,6 @@ function renderEmojis(){
     document.querySelector('.emojis').innerHTML=strHTML.join(' ')
 }
 
-
-
 function getEmojis() {
     const startIdx = gPageIdx * PAGE_SIZE
     return gEmojis.slice(startIdx, startIdx + 3)

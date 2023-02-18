@@ -21,10 +21,8 @@ function renderMemesPage(){
 
 function onSelectedMeme(memeInfo) {
   const meme = JSON.parse(decodeURIComponent(memeInfo));
-  console.log('meme',meme)
-
   const { selectedImgId: imgId, selectedLineIdx: lineIdx, lines } = meme;
-  console.log('imgId,lineIdx,lines', imgId, lineIdx, lines);
+  // console.log('imgId,lineIdx,lines', imgId, lineIdx, lines);
   showMemeCreatingPage();
   hideMemesPage();
   setMeme(imgId,lineIdx,lines);

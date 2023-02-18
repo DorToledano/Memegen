@@ -50,8 +50,28 @@
     <!-- Photos gallery page-->
     <main class="home-page">
         <section class="search-bar">
-            <label for="img-search">Look for meme image:</label>
-            <input id="img-search" type="text" placeholder="Search">
+            <label for="img-search">Filter images by keyword:
+                <input id="img-search" type="text" placeholder="Search" oninput="onFilterImgs(this.value)" list="keywords">
+            </label>
+            <datalist id="keywords">
+                <option value="funny">
+                <option value="politics">
+                <option value="cute">
+                <option value="dog">
+                <option value="baby">
+                <option value="sleep">
+                <option value="cat">
+                <option value="happy">
+                <option value="confused">
+                <option value="surprise">
+                <option value="creepy">
+                <option value="awkward">
+                <option value="famous">
+                <option value="mission">
+                <option value="zero">
+                <option value="scary">
+                <option value="toy">
+              </datalist>
         </section>
         <ul class="search-by-keywords clean-list flex">
             <li><a href="#">happy</a></li>
