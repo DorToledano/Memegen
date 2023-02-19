@@ -16,9 +16,7 @@ function init() {
 
 function renderMeme() {
   const meme = getMeme()
-  console.log('meme',meme)
   let currImg = getImageById(meme.selectedImgId)
-  console.log('currImg',currImg)
   const img = new Image()
   img.src = currImg.url
   img.onload = () => {
