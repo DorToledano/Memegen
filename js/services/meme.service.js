@@ -134,9 +134,9 @@ function setLineTxt(newTxt) {
   gMeme.lines[gMeme.selectedLineIdx].txt = newTxt
 }
 
-function addLine() {
+function addLine(txt='type...') {
   gMeme.lines.push({
-    txt: '',
+    txt: txt,
     size: 40,
     align: 'center',
     color: 'black',
@@ -271,4 +271,23 @@ function moveLine(dx, dy) {
   // console.log('gMeme.lines[gMeme.selectedLineIdx]',gMeme.lines[gMeme.selectedLineIdx])
   gMeme.lines[gMeme.selectedLineIdx].x += dx
   gMeme.lines[gMeme.selectedLineIdx].y += dy
+}
+
+function randomMeme() {
+  gMeme.selectedImgId = getRandomIntInclusive(1, gImgs.length - 1)
+  console.log('gMeme.selectedImgId',gMeme.selectedImgId)
+  // console.log('Math.random()',Math.random())
+  if (Math.random() > 0.5) {
+      addLine()
+      setTxtPos(1)
+      console.log('gMeme',gMeme)
+  }
+  gMeme.lines.forEach(line => {
+      line.txt = makeLorem(3)
+      line.size = getRandomIntInclusive(30, 45)
+      line.color = getRandomColor()
+    })
+    console.log('gMeme',gMeme)
+
+    // drawText()
 }

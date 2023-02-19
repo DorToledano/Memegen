@@ -54,6 +54,9 @@
             <label for="img-search">Filter images by keyword:
                 <input id="img-search" type="search" placeholder="Search" oninput="onFilterImgs(this.value)" list="keywords">
             </label>
+            <button data-trans="flexible" class="btn-generate button btn-round" onclick="onRandomMeme()">I'm flexible</button>
+
+
             <datalist id="keywords">
                 <option value="funny">
                 <option value="politics">
@@ -186,7 +189,7 @@
     </main>
 
     <!-- flash msg -->
-    <div class="flash-msg">
+    <div class="flash-msg" >
         <h1>
             Meme saved successfully! <i class="fa-regular fa-floppy-disk"></i>
         </h1>  

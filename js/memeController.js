@@ -16,7 +16,9 @@ function init() {
 
 function renderMeme() {
   const meme = getMeme()
+  console.log('meme',meme)
   let currImg = getImageById(meme.selectedImgId)
+  console.log('currImg',currImg)
   const img = new Image()
   img.src = currImg.url
   img.onload = () => {
@@ -46,22 +48,6 @@ function drawText(text, color, size, font = 'arial', align, lineIdx) {
   gCtx.strokeText(text, x, y)
 }
 
-// function drawText(text, color, size, font = 'arial', align, lineIdx) {
-//   gCtx.lineWidth = 1
-//   gCtx.strokeStyle = `white`
-//   gCtx.fillStyle = `${color}`
-//   gCtx.font = `${size}px ${font}`
-//   gCtx.textAlign = `${align}`
-//   gCtx.textBaseline = 'middle'
-
-//   const { x, y } = setTxtPos(lineIdx)
-//   gCtx.fillText(text, x, y)
-//   gCtx.strokeText(text, x, y)
-
-//   // isDecreaseLineHeight = false
-//   // isIncreaseLineHeight = false
-//   // gCtx.save()
-// }
 
 function isDecreaseLineHt(bool) {
   isDecreaseLineHeight = bool
@@ -401,3 +387,8 @@ function addTouchListeners() {
 }
 
 
+function onRandomMeme() {
+  showMemeCreatingPage()
+  randomMeme()
+  renderMeme()
+}
