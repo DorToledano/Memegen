@@ -16,6 +16,7 @@
 @import "components/logo.css";
 @import "components/footer.css";
 @import "components/modal.css";
+@import "components/flash-msg.css";
 
 /* COMPONENTS : meme-creating */
 @import "components/card.css";

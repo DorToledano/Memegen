@@ -9,7 +9,6 @@
   }
   .card .editor{
     flex-direction: column;
-    align-items: flex-start;
     padding: 2em 1em;
     width: 530px;
     border-radius: 3em;
@@ -205,7 +204,7 @@
 
         grid-template-rows:
         minmax(130px, 1fr)
-        minmax(auto, 2fr)
+        minmax(auto, 8fr)
         minmax(130px, 1fr);
     }
     .card-layout {
@@ -219,14 +218,14 @@
 
    }
    
-    .home-page-layout{
-      /* check why doesnt work ??? */
+   /* check why doesnt work ??? */
+    /* .home-page-layout{
       grid-template-areas: 
       "search keywords"
       "gallery gallery"
       
       ;
-    }
+    } */
 
     .card .editor{
       flex-direction: column;

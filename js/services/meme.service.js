@@ -1,7 +1,25 @@
 let gFilteredImgs
 
 // var gKeywordSearchCountMap = { funny: 12, dog: 20, politics: 2 , cute, baby, dog, sleep,}
-var gKeywordSearchCountMap = {} //funny: 12, dog: 20, politics: 2 ,
+var gKeywordSearchCountMap = {  funny: 1,
+  dog: 1,
+  politics: 1,
+  cute: 1,
+  baby: 1,
+  dog: 1,
+  sleep: 1,
+  cat:1,
+  happy:1,
+  man:1,
+  confused:1,
+  surprise:1,
+  creepy:1,
+  awkward:1,
+  famous:1,
+  mission:1,
+  zero:1,
+  scary:1,
+  toy:1,} //funny: 12, dog: 20, politics: 2 ,
 var gImgs = [
   { id: 1, url: 'meme-imgs (square)/1.jpg', keywords: ['funny', 'politics'] },
   { id: 2, url: 'meme-imgs (square)/2.jpg', keywords: ['cute', 'dog'] },
@@ -40,24 +58,26 @@ var gMeme = {
   ],
 }
 
-function filterImgs(keyword){
+function filterImgs(keyword) {
   // console.log('filter')
-  let counter=0
+  let counter = 0
   gFilteredImgs = gImgs.reduce((acc, img) => {
     if (img.keywords.includes(`${keyword}`)) {
       counter++
-      if (counter===1) {
-        gKeywordSearchCountMap[keyword]?gKeywordSearchCountMap[keyword]++ :gKeywordSearchCountMap[keyword]=1
+      if (counter === 1) {
+        gKeywordSearchCountMap[keyword]
+          ? gKeywordSearchCountMap[keyword]++
+          : (gKeywordSearchCountMap[keyword] = 1)
         console.log('in')
       }
-      acc.push(img);
+      acc.push(img)
     }
-    return acc;
-  }, []);
+    return acc
+  }, [])
   return gFilteredImgs
 }
 
-function getFilterImgs(){
+function getFilterImgs() {
   return gFilteredImgs
 }
 
@@ -80,17 +100,17 @@ function resetMeme() {
   }
 }
 
-function getKeywords(){
+function getKeywords() {
   return gKeywordSearchCountMap
 }
 
-function setMeme(ImgId,lineIdx,allLines){
+function setMeme(ImgId, lineIdx, allLines) {
   gMeme = {
     selectedImgId: ImgId,
     selectedLineIdx: lineIdx,
     lines: allLines,
-}
-console.log('gMeme',gMeme)
+  }
+  console.log('gMeme', gMeme)
 }
 
 function setImg(id) {
@@ -151,7 +171,6 @@ function setColor(newColor) {
 }
 function changeFontSize(diff) {
   gMeme.lines[gMeme.selectedLineIdx].size += diff
-  
 }
 
 function changeAlign(align) {

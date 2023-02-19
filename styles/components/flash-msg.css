@@ -1,0 +1,13 @@
+.flash-msg{
+    background-color: #f8f8f5b4;
+    /* color: var(--clr4); */
+    color: #0e81a4a7;
+    height: 150px;
+    width: 500px;
+    padding: 30px;
+    text-align: center;
+    translate:  0 100%;
+    transition: .8s;
+    box-shadow: -6px 0px 20px 5px rgb(0 0 0 / 22%);
+    
+}

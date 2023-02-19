@@ -16,6 +16,10 @@ function onSaveMeme(){
   }
 
   function onSaveMemeData(){
+    document.querySelector('.flash-msg').style.translate='0'
+    setTimeout(() => {
+      document.querySelector('.flash-msg').style.translate='0 100%'
+    }, 2000);
     const meme = gElCanvas.toDataURL()
     let memes = loadFromStorage(STORAGE_KEY)
     console.log('memes',memes)

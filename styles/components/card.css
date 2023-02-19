@@ -1,6 +1,5 @@
 
 .card .canvas-container {
-    grid-area: i;
     height: 100%;
   }
   
@@ -15,7 +14,7 @@
   
   .card .btns-container {
     margin-inline:auto;
-    grid-area: p;
+    /* grid-area: p; */
     align-self:flex-start;
     width: 76%;
   }
@@ -25,7 +24,6 @@
     flex-direction: column;
     gap: 10px;
     align-items: center;
-    /* grid-area: t; */
     border-radius: 1em;
   }
   .card {
@@ -33,7 +31,6 @@
   }
   .card .card-input {
     display: flex;
-    /* grid-area: h; */
     width: 100%;
     justify-content: center;
   }

@@ -77,7 +77,7 @@ function renderGallery() {
     let strHtml=''
     const keywordsMap= getKeywords() 
     for (const key in keywordsMap) {
-      strHtml+=`<li><a class="key ${key}" href="#">${key}</a></li>`
+      strHtml+=`<li><a class="key ${key}" href="#" onclick="onFilterImgs('${key}')">${key}</a></li>`
     }
     document.querySelector('.search-by-keywords').innerHTML = strHtml
     for (let key in keywordsMap) {

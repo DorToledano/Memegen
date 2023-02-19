@@ -52,7 +52,7 @@
     <main class="home-page">
         <section class="search-bar">
             <label for="img-search">Filter images by keyword:
-                <input id="img-search" type="text" placeholder="Search" oninput="onFilterImgs(this.value)" list="keywords">
+                <input id="img-search" type="search" placeholder="Search" oninput="onFilterImgs(this.value)" list="keywords">
             </label>
             <datalist id="keywords">
                 <option value="funny">
@@ -75,9 +75,9 @@
               </datalist>
         </section>
         <ul class="search-by-keywords clean-list flex">
-            <li><a href="#">happy</a></li>
+            <!-- <li><a href="#" >happy</a></li>
             <li><a href="#">sad</a></li>
-            <li><a href="#">dogs</a></li>
+            <li><a href="#">dogs</a></li> -->
         </ul>
         <section class="gallery grid">
             <!-- <img src="meme-imgs (square)/1.jpg" alt="">
@@ -131,7 +131,7 @@
                             <button class="btn-round"><i class="fa-solid fa-palette"> <input type="color" name="" id=""
                                         oninput="onChangeColor(this.value)" title="click to change color"></i></button>
                             <button class="btn-round"><i class="fa-solid fa-font"> 
-                                <input type="text" name="" class="fonts" placeholder="Choose font"  oninput="onChangeFont(this.value)" list="fonts"></i></button>
+                                <input type="search" name="" class="fonts" placeholder="Choose font"  oninput="onChangeFont(this.value)" list="fonts"></i></button>
                                 <datalist id="fonts">
                                     <option value="arial">
                                     <option value="times">
@@ -184,6 +184,13 @@
             <!-- <img src="" alt=""> -->
         </section>
     </main>
+
+    <!-- flash msg -->
+    <div class="flash-msg">
+        <h1>
+            Meme saved successfully! <i class="fa-regular fa-floppy-disk"></i>
+        </h1>  
+    </div>
 
     <!-- footer -->
     <footer class="main-footer full">

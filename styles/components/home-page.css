@@ -22,10 +22,11 @@
     min-height: 100px;
     gap: 20px;
     background-color: #0a5c75bf;
-   padding-inline: 30px;
+   padding-inline: 20px;
    align-items: center;
    border-radius: 20px;
     margin-block-end: 20px;
+    flex-wrap: wrap;
 }
 
 .home-page .search-by-keywords a{

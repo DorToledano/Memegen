@@ -382,9 +382,10 @@ function addListeners() {
   addMouseListeners()
   addTouchListeners()
   //Listen for resize ev
-  window.addEventListener('resize', () => {
-    init()
-  })
+  // window.addEventListener('resize', () => {
+  //   init()
+  // }
+  // )
 }
 
 function addMouseListeners() {
